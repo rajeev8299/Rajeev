@@ -1,34 +1,19 @@
 export default function Skills() {
-  const skills = [
+  const skillCategories = [
     {
-      code: "H5",
-      title: "HTML",
-      desc: "Semantic, accessible and well-structured markup — the skeleton of every page.",
-      pips: [true, true, true, true, true],
+      title: "Core Frontend",
+      desc: "Daily driver technologies I use to build user-facing products.",
+      items: ["HTML5", "CSS3 / Modern CSS", "JavaScript (ES6+)", "TypeScript", "React", "Next.js"],
     },
     {
-      code: "CS",
-      title: "CSS",
-      desc: "Responsive layouts, flexbox, grid, animations and clean modern styling.",
-      pips: [true, true, true, true, true],
+      title: "Design & UX Principles",
+      desc: "Techniques I care about to make websites feel intuitive.",
+      items: ["Mobile-first Responsive Design", "Flexbox & Grid Systems", "Clean Typography", "Micro-interactions", "Accessibility (a11y)"],
     },
     {
-      code: "JS",
-      title: "JavaScript",
-      desc: "Interactive UI, DOM manipulation, API calls and modern ES6+ syntax.",
-      pips: [true, true, true, true, false],
-    },
-    {
-      code: "Re",
-      title: "React",
-      desc: "Components, props, state, hooks and reusable UI architecture.",
-      pips: [true, true, true, true, false],
-    },
-    {
-      code: "Nx",
-      title: "Next.js",
-      desc: "Fast production websites with routing, SSR and optimized builds.",
-      pips: [true, true, true, false, false],
+      title: "Tools & Workflow",
+      desc: "My software environment and development ecosystem.",
+      items: ["Git & GitHub", "VS Code", "Vercel / Netlify", "Figma to Code", "Node / npm ecosystem"],
     },
   ];
 
@@ -36,26 +21,30 @@ export default function Skills() {
     <section id="skills" className="stage">
       <div className="wrap">
         <div className="reveal in">
-          <span className="eyebrow">Skills</span>
+          <span className="eyebrow">Skills &amp; Toolkit</span>
           <h2 className="section-title">
-            Tools I <span className="thin">build with</span>
+            Technologies I <span className="thin">work with</span>
           </h2>
           <p className="section-sub">
-            The technologies I use every day to design and develop web projects.
+            The practical skills, languages, and tools I use to bring ideas to reality.
           </p>
         </div>
 
-        <div className="skills-grid">
-          {skills.map((s) => (
-            <div key={s.title} className="gcard skill reveal in" data-tilt data-tilt-max="11">
-              <div className="skill-ic">{s.code}</div>
-              <h3>{s.title}</h3>
-              <p>{s.desc}</p>
-              <div className="pips">
-                {s.pips.map((isOn, idx) => (
-                  <i key={idx} className={isOn ? "on" : ""} />
-                ))}
+        <div className="human-skills-grid">
+          {skillCategories.map((cat) => (
+            <div key={cat.title} className="gcard human-skill-card reveal in" data-tilt data-tilt-max="5">
+              <div className="human-skill-head">
+                <h3>{cat.title}</h3>
+                <p>{cat.desc}</p>
               </div>
+              <ul className="human-skill-list">
+                {cat.items.map((it) => (
+                  <li key={it}>
+                    <span className="skill-check">✓</span>
+                    <span>{it}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>

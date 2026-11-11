@@ -2,50 +2,56 @@ export default function Projects() {
   const projects = [
     {
       num: "01",
-      lang: "TypeScript",
+      lang: "TypeScript · Next.js",
       title: "Taza Sabji Bazzar",
-      desc: "An online sabzi bazaar storefront for fresh groceries, built as a fast Next.js + TypeScript web application.",
-      tags: ["Next.js", "TypeScript", "UI"],
+      desc: "An online storefront for fresh vegetables & grocery items. Features a clean product catalog, item quantity selectors, and quick basket updates.",
+      why: "Built to make daily grocery ordering straightforward on mobile screens with rapid load times.",
+      tags: ["Next.js", "TypeScript", "Tailwind / CSS", "State Handling"],
       link: "https://rajeev8299.github.io/tazasabjibazzar",
     },
     {
       num: "02",
-      lang: "JavaScript",
+      lang: "Vanilla JS · Frontend",
       title: "Travel Buddy",
-      desc: "A travel website to explore destinations and plan trips — interactive pages built with vanilla JavaScript.",
-      tags: ["JavaScript", "Responsive", "Frontend"],
+      desc: "A destination guide and trip planning portal with custom destination filters, itinerary previews, and responsive cards.",
+      why: "Created to practice clean DOM manipulation and modular JS without heavy dependencies.",
+      tags: ["JavaScript", "CSS Grid", "Responsive Design"],
       link: "https://rajeev8299.github.io/travel-buddy",
     },
     {
       num: "03",
-      lang: "HTML",
-      title: "Dental Clinic Site",
-      desc: "A complete dental clinic website with services, team, testimonials and a React frontend version.",
-      tags: ["HTML", "CSS", "React"],
+      lang: "React · Web App",
+      title: "Dental Clinic Portal",
+      desc: "A patient-first healthcare service website featuring doctors' schedules, treatments list, and appointment booking inquiries.",
+      why: "Focusing on trust, accessibility, clean typography and patient-friendly booking actions.",
+      tags: ["React", "CSS Modules", "Accessible UI"],
       link: "https://rajeev8299.github.io/dental-clinic-site",
     },
     {
       num: "04",
-      lang: "HTML",
+      lang: "HTML & Modern CSS",
       title: "Rajeev Fitness (Gym)",
-      desc: "A gym website with classes, timetable, gallery, pricing and diet plans — fully responsive with dark mode.",
-      tags: ["HTML", "CSS", "JavaScript"],
+      desc: "Comprehensive fitness studio website complete with batch schedules, membership pricing tiers, trainers, and diet charts.",
+      why: "Explored dark aesthetic styling, high-contrast typography, and smooth CSS transitions.",
+      tags: ["HTML5", "Modern CSS", "Dark Mode"],
       link: "https://rajeev8299.github.io/gym",
     },
     {
       num: "05",
-      lang: "HTML",
-      title: "E-Commerce Store",
-      desc: "An e-commerce storefront with product listing, category navigation and cart interactions.",
-      tags: ["HTML", "CSS", "JavaScript"],
+      lang: "JavaScript",
+      title: "E-Commerce Storefront",
+      desc: "Digital store concept with product grid, client-side category filters, active shopping cart drawer, and order total calculations.",
+      why: "Deep-dived into frontend cart state management and localStorage persistence.",
+      tags: ["JavaScript", "Cart Logic", "E-Commerce"],
       link: "https://rajeev8299.github.io/E-Commerce-",
     },
     {
       num: "06",
-      lang: "HTML",
-      title: "Portfolio Website",
-      desc: "A personal portfolio showcasing my frontend work, skills and experience.",
-      tags: ["HTML", "CSS", "JavaScript"],
+      lang: "Next.js · React",
+      title: "Personal Developer Space",
+      desc: "My personal developer portfolio showcasing genuine projects, career roots, and interactive UI experiments.",
+      why: "Iterated continuously to balance delightful micro-interactions with real human readability.",
+      tags: ["Next.js", "React", "TypeScript", "Vercel"],
       link: "https://rajeev8299.github.io/portfolio/",
     },
   ];
@@ -55,12 +61,12 @@ export default function Projects() {
       <div className="wrap">
         <div className="proj-head reveal in">
           <div>
-            <span className="eyebrow">Projects</span>
+            <span className="eyebrow">Featured Work</span>
             <h2 className="section-title">
-              Things I&apos;ve <span className="thin">built</span>
+              Projects I&apos;ve <span className="thin">designed &amp; coded</span>
             </h2>
             <p className="section-sub">
-              Explore my GitHub projects — open any live website to try it out.
+              Real projects with live demos and source code. Built to solve real problems and sharpen my frontend skills.
             </p>
           </div>
           <a
@@ -69,7 +75,7 @@ export default function Projects() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            All repositories
+            All GitHub Repositories
             <svg
               aria-hidden="true"
               viewBox="0 0 24 24"
@@ -86,7 +92,7 @@ export default function Projects() {
 
         <div className="proj-grid">
           {projects.map((p) => (
-            <article key={p.num} className="gcard proj reveal in" data-tilt data-tilt-max="10">
+            <article key={p.num} className="gcard proj reveal in" data-tilt data-tilt-max="5">
               <span className="proj-no">{p.num}</span>
               <div className="proj-top">
                 <span className="lang">
@@ -95,6 +101,13 @@ export default function Projects() {
               </div>
               <h3>{p.title}</h3>
               <p>{p.desc}</p>
+              
+              {p.why && (
+                <p className="proj-why">
+                  <b>Why I built it:</b> {p.why}
+                </p>
+              )}
+
               <div className="tags">
                 {p.tags.map((t) => (
                   <span key={t} className="tag">

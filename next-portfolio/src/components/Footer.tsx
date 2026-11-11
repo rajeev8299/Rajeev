@@ -23,7 +23,7 @@ export default function Footer() {
     <>
       <footer>
         <div className="wrap foot">
-          <span>© {year} Rajeev Yadav — Web Developer</span>
+          <span>Designed &amp; hand-coded by Rajeev Yadav with Next.js &bull; &copy; {year}</span>
           <div className="foot-links">
             <a href="https://github.com/rajeev8299" target="_blank" rel="noopener noreferrer">
               GitHub

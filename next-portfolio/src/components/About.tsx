@@ -1,18 +1,24 @@
 export default function About() {
   const highlights = [
-    { num: "100%", label: "Responsive Layouts" },
-    { num: "0.1s", label: "Optimized Latency" },
-    { num: "6+", label: "Live Web Apps" },
-    { num: "Clean", label: "Semantic Code" },
+    { num: "6+", label: "Real Web Projects" },
+    { num: "MCA", label: "AKTU Graduate" },
+    { num: "6 Mo", label: "Software Internship" },
+    { num: "100%", label: "Curiosity & Grit" },
   ];
 
-  const coreFocus = [
-    "Pixel-Perfect UI",
-    "Modern Next.js & React",
-    "Tailwind & CSS Architecture",
-    "Mobile-First Experience",
-    "Performance & SEO",
-    "Clean Code Practices",
+  const whatIDo = [
+    {
+      title: "UI & Component Architecture",
+      desc: "Building clean, accessible React & Next.js components that are easy to maintain and scale.",
+    },
+    {
+      title: "Responsive & Modern Styling",
+      desc: "Pixel-accurate CSS, Flexbox/Grid layouts, and mobile-friendly interfaces without bloated frameworks.",
+    },
+    {
+      title: "Performance & Detail",
+      desc: "Fast load times, smooth transitions, semantic HTML and zero unnecessary animations.",
+    },
   ];
 
   return (
@@ -21,42 +27,43 @@ export default function About() {
         <div className="reveal in">
           <span className="eyebrow">About me</span>
           <h2 className="section-title">
-            A developer who cares <span className="thin">about the details</span>
+            The person <span className="thin">behind the code</span>
           </h2>
-          <p className="section-sub">Short version of who I am, what I study and what I build.</p>
+          <p className="section-sub">A genuine look at what I do, how I work, and what drives me.</p>
         </div>
 
         <div className="about-grid">
-          {/* Left Column: Rich interactive bio, stats & design philosophy cards */}
+          {/* Left Column: Authentic human bio & values */}
           <div className="about-left-col">
-            <div className="gcard about-card reveal in" data-tilt data-tilt-max="7">
+            <div className="gcard about-card reveal in" data-tilt data-tilt-max="5">
               <p>
-                I&apos;m <strong>Rajeev Yadav</strong>, a passionate <strong>Web Developer</strong>{" "}
-                who crafts clean, ultra-responsive and visually engaging web experiences with an eye for subtle details.
+                Hey! I&apos;m <strong>Rajeev Yadav</strong>, a frontend developer based in <strong>Varanasi, India</strong>.
+                I fell in love with coding because of that magical feeling when written code transforms into a living,
+                interactive product that people can actually touch and use.
               </p>
               <p>
-                My primary playground is <strong>React</strong> and <strong>Next.js</strong>, powered by deep fundamentals
-                in <strong>HTML5</strong>, <strong>CSS3</strong> and modern <strong>JavaScript (ES6+)</strong>. I believe great
-                software blends intuitive UI design, smooth micro-interactions, and blazing-fast loading speeds.
+                My everyday stack centers on <strong>React</strong>, <strong>Next.js</strong>, and modern <strong>TypeScript / JavaScript</strong>, 
+                supported by solid fundamentals in <strong>HTML5</strong> and <strong>CSS3</strong>. During my software developer internship at <strong>Osizone</strong>,
+                I learned the value of clean architecture, real team workflows, Git collaboration, and shipping reliable code.
               </p>
               <p>
-                Beyond writing code, I constantly experiment with cutting-edge web tech, refine interactive UI patterns,
-                and push production-ready open-source projects on GitHub.
+                When I&apos;m not debugging layouts or crafting new interfaces, you&apos;ll probably find me on the skating rink — I&apos;m a state-level medalist in <strong>Roll Ball &amp; Skate Racing</strong>. 
+                Sports taught me consistency, fast reflexes, and showing up every single day.
               </p>
             </div>
 
             {/* Quick Metrics Grid */}
             <div className="about-metrics-grid reveal in">
               {highlights.map((h) => (
-                <div key={h.label} className="about-metric-card" data-tilt data-tilt-max="6">
+                <div key={h.label} className="about-metric-card" data-tilt data-tilt-max="5">
                   <span className="about-metric-num">{h.num}</span>
                   <span className="about-metric-lbl">{h.label}</span>
                 </div>
               ))}
             </div>
 
-            {/* Development Philosophy & Design Values */}
-            <div className="about-values-card reveal in" data-tilt data-tilt-max="6">
+            {/* Practical development approach */}
+            <div className="about-values-card reveal in" data-tilt data-tilt-max="5">
               <div className="about-values-head">
                 <svg
                   aria-hidden="true"
@@ -67,15 +74,17 @@ export default function About() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 >
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="m9 12 2 2 4-4" />
                 </svg>
-                Core Standards &amp; Principles
+                How I Approach Web Development
               </div>
-              <div className="about-chips-wrap">
-                {coreFocus.map((item) => (
-                  <span key={item} className="about-chip">
-                    <i /> {item}
-                  </span>
+              <div className="about-pillars">
+                {whatIDo.map((p) => (
+                  <div key={p.title} className="about-pillar-item">
+                    <h4>{p.title}</h4>
+                    <p>{p.desc}</p>
+                  </div>
                 ))}
               </div>
             </div>

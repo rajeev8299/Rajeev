@@ -13,7 +13,7 @@ export default function Achievements() {
         </div>
 
         <div className="ach-grid">
-          <article className="gcard ach reveal in" data-tilt data-tilt-max="10">
+          <article className="gcard ach reveal in" data-tilt data-tilt-max="5">
             <div className="ach-ic">
               <svg
                 aria-hidden="true"
@@ -28,20 +28,18 @@ export default function Achievements() {
                 <path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3" />
               </svg>
             </div>
-            <h3>Sports Achievements</h3>
+            <h3>Sports &amp; Athletics</h3>
             <p>
-              Won <b>state-level medals</b> in <b>Roll Ball</b> and <b>Skate Racing</b> tournaments
-              — representing discipline, focus and team collaboration.
+              Competitive sports shaped my discipline and drive. Won <b>state-level &amp; district medals</b> in <b>Roll Ball</b> and <b>Skate Racing</b> — representing consistency, quick decision-making and team grit.
             </p>
             <div className="medal-row">
-              <span className="medal">🏆 Roll Ball</span>
-              <span className="medal">🛹 Skate Racing</span>
-              <span className="medal">🎖️ District Level ×3</span>
-              <span className="medal">🎖️ State Level</span>
+              <span className="medal">🏆 Roll Ball (State Medalist)</span>
+              <span className="medal">🛹 Skate Racing (State)</span>
+              <span className="medal">🎖️ 3× District Champion</span>
             </div>
           </article>
 
-          <article className="gcard ach reveal in" data-tilt data-tilt-max="10">
+          <article className="gcard ach reveal in" data-tilt data-tilt-max="5">
             <div className="ach-ic">
               <svg
                 aria-hidden="true"
@@ -56,15 +54,15 @@ export default function Achievements() {
                 <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z" />
               </svg>
             </div>
-            <h3>Languages</h3>
+            <h3>Communication &amp; Languages</h3>
             <div className="lang-row">
               <div className="lang-item">
                 <b>English</b>
-                <span>Professional Working Proficiency</span>
+                <span>Professional &amp; Technical Communication</span>
               </div>
               <div className="lang-item">
                 <b>Hindi</b>
-                <span>Native</span>
+                <span>Native / Fluent</span>
               </div>
             </div>
           </article>

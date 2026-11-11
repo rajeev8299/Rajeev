@@ -39,14 +39,14 @@ export default function Contact() {
   return (
     <section id="contact" className="stage">
       <div className="wrap">
-        <div className="gcard contact-card reveal in" data-tilt data-tilt-max="5">
-          <span className="eyebrow">Contact</span>
+        <div className="gcard contact-card reveal in" data-tilt data-tilt-max="4">
+          <span className="eyebrow">Get in touch</span>
           <h2>
-            Let&apos;s build something <span className="grad">together</span>
+            Let&apos;s build something <span className="grad">real</span>
           </h2>
           <p>
-            Have a project, an internship or a role in mind? My inbox is always open — I&apos;ll get
-            back to you.
+            Whether you have a job opportunity, freelance project, or just want to discuss frontend ideas — 
+            I reply to every message personally. Feel free to shoot me an email or call!
           </p>
 
           <div className="contact-actions">

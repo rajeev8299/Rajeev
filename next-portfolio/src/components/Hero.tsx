@@ -94,15 +94,21 @@ export default function Hero() {
             <span className="grad">Rajeev Yadav</span>
           </h1>
           <div className="role">
-            <span id="typed">{typedText}</span>
-            <span className="cursor" />
+            <span id="typed">Frontend Developer &amp; UI Builder</span>
           </div>
 
           <p className="lead">
-            I design and build <b>fast, responsive and stylish</b> web interfaces with{" "}
-            <b>React</b>, <b>Next.js</b>, <b>HTML</b>, <b>CSS</b> and <b>JavaScript</b> — from a
-            rough idea to a polished, production-ready website.
+            I craft fast, responsive and thoughtful web applications using <b>React</b>, <b>Next.js</b> and <b>modern CSS</b>. 
+            I focus on simple architecture, clean layouts, and experiences that feel effortless to use.
           </p>
+
+          <div className="hero-human-status">
+            <span className="status-indicator">
+              <span className="status-ping" />
+              <span className="status-core" />
+            </span>
+            <span>Currently based in Varanasi, India &bull; Open for full-time frontend roles &amp; projects</span>
+          </div>
 
           <div className="hero-actions">
             <a className="btn btn-primary" href="#projects">
@@ -150,19 +156,15 @@ export default function Hero() {
           <div className="stats">
             <div className="stat">
               <b>{counts.projects}+</b>
-              <span>Projects</span>
+              <span>Featured Projects</span>
             </div>
             <div className="stat">
-              <b>{counts.degrees}</b>
-              <span>Degrees</span>
+              <b>MCA + BCA</b>
+              <span>Academic Roots</span>
             </div>
             <div className="stat">
-              <b>{counts.skills}</b>
-              <span>Core skills</span>
-            </div>
-            <div className="stat">
-              <b>{counts.internship}</b>
-              <span>Internship</span>
+              <b>6+ Mos</b>
+              <span>Industry Internship</span>
             </div>
           </div>
         </div>
