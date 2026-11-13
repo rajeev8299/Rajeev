@@ -1,0 +1,12 @@
+# Linguist overrides to reflect genuine source code distribution
+# Next.js static build outputs, vendored assets and documentation backups are marked as generated/vendored
+
+# Generated build output
+index.html linguist-generated=true
+_next/** linguist-vendored=true
+assets/index-*.js linguist-vendored=true
+assets/index-*.css linguist-vendored=true
+
+# Preserved historical backup archive & documentation
+backup/** linguist-vendored=true
+documentation/** linguist-documentation=true
