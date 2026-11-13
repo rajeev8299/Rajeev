@@ -10,3 +10,4 @@ assets/index-*.css linguist-vendored=true
 # Preserved historical backup archive & documentation
 backup/** linguist-vendored=true
 documentation/** linguist-documentation=true
+
