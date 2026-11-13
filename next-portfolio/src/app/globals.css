@@ -81,6 +81,78 @@
   --transition: 180ms ease-in-out;
 }
 
+/* ==================================================
+   DARK MODE PALETTE OVERRIDES
+   ================================================== */
+[data-theme="dark"] {
+  /* GLOBAL PALETTE BASELINE */
+  --bg-app: #12161F;
+
+  /* TEXT COLORS */
+  --text-primary: #F0F4FC;
+  --text-secondary: #9BA8BD;
+  --text-muted: #6C7A8E;
+
+  /* ACCENT COLORS */
+  --blue-primary: #4F7DF3;
+  --blue-hover: #3D6BE3;
+  --blue-light: #1E293B;
+  --teal-secondary: #2DD4BF;
+  --teal-hover: #14B8A6;
+  --teal-light: #132E35;
+  --amber-accent: #FBBF24;
+  --amber-light: #362B15;
+
+  /* SECTION BACKGROUNDS (Deep tone differentiations) */
+  --bg-hero: #12161F;
+  --bg-about: #161B26;
+  --bg-skills: #151D20;
+  --bg-projects: #1C1917;
+  --bg-experience: #1A1622;
+  --bg-education: #151C18;
+  --bg-achievements: #1E1B16;
+  --bg-contact: #1E1718;
+  --bg-footer: #0D1117;
+
+  /* CARD SURFACES */
+  --card-hero-profile: #1E2433;
+  --card-about-narrative: #1C2333;
+  --card-about-pillar: #171E2C;
+  --card-skill: #1A2420;
+  --card-skill-inner: #131A17;
+  --card-project: #231E1B;
+  --card-project-focus: #2B241E;
+  --card-experience: #221D2B;
+  --card-experience-inner: #18141F;
+  --card-education: #1A221C;
+  --card-education-inner: #141B15;
+  --card-achievement: #24201A;
+  --card-achievement-inner: #1A1713;
+  --card-contact: #251D1F;
+  --card-contact-inner: #1C1416;
+
+  /* BORDERS */
+  --border-color: #273142;
+  --border-card-hero: #2A364A;
+  --border-card-about: #28374D;
+  --border-card-skill: #23362C;
+  --border-card-project: #382E25;
+  --border-card-experience: #352B3E;
+  --border-card-education: #243527;
+  --border-card-achievement: #383024;
+  --border-card-contact: #3B2A2D;
+
+  /* FOOTER */
+  --footer-border: #212936;
+  --footer-text: #8E9BAE;
+
+  /* SHADOWS */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.6);
+}
+
 /* RESET & BASE */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -158,6 +230,32 @@ button {
   .container {
     padding: 0 1.25rem;
   }
+}
+
+/* THEME TOGGLE BUTTON */
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-sm);
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+[data-theme="dark"] .theme-toggle-btn {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.theme-toggle-btn:hover {
+  background-color: var(--blue-light);
+  color: var(--blue-primary);
+  border-color: var(--blue-primary);
+  transform: translateY(-1px);
 }
 
 /* BUTTONS */

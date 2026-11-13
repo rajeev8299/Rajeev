@@ -2,13 +2,33 @@
 
 import { useEffect, useState } from "react";
 import { personalData } from "@/data/portfolio";
-import { ArrowDownToLine } from "lucide-react";
+import { ArrowDownToLine, Moon, Sun } from "lucide-react";
 import { GithubIcon } from "./GithubIcon";
 
 export default function Navbar() {
   const [isStuck, setIsStuck] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+
+  useEffect(() => {
+    // Check saved preference or system preference
+    const savedTheme = localStorage.getItem("portfolio-theme") as "light" | "dark" | null;
+    if (savedTheme) {
+      setTheme(savedTheme);
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      setTheme("dark");
+      document.documentElement.setAttribute("data-theme", "dark");
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const nextTheme = theme === "light" ? "dark" : "light";
+    setTheme(nextTheme);
+    document.documentElement.setAttribute("data-theme", nextTheme);
+    localStorage.setItem("portfolio-theme", nextTheme);
+  };
 
   useEffect(() => {
     const onScroll = () => {
@@ -97,6 +117,17 @@ export default function Navbar() {
         </nav>
 
         <div className="navbar-actions">
+          {/* Theme Toggle Button */}
+          <button
+            type="button"
+            className="theme-toggle-btn"
+            onClick={toggleTheme}
+            aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+            title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+          >
+            {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}
+          </button>
+
           <a
             className="btn btn-secondary btn-sm"
             href={personalData.resumePath}
@@ -143,7 +174,16 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
-          <div>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+            <button
+              type="button"
+              className="btn btn-outline"
+              onClick={toggleTheme}
+              style={{ width: "100%", justifyContent: "center" }}
+            >
+              {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}
+              <span>Switch to {theme === "light" ? "Dark Mode" : "Light Mode"}</span>
+            </button>
             <a
               href={personalData.resumePath}
               download="Rajeev_Yadav_Resume.pdf"
