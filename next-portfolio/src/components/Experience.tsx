@@ -1,49 +1,78 @@
+import { experienceData } from "@/data/portfolio";
+import { Briefcase, Calendar, MapPin, CheckCircle } from "lucide-react";
+
 export default function Experience() {
   return (
-    <section id="experience" className="stage">
-      <div className="wrap">
-        <div className="reveal in">
-          <span className="eyebrow">Work experience</span>
-          <h2 className="section-title">
-            Where I&apos;ve <span className="thin">worked</span>
-          </h2>
-          <p className="section-sub">
-            Hands-on internship building real applications with a professional team.
+    <section id="experience" className="section experience-section" aria-label="Professional Experience">
+      <div className="container">
+        {/* Section Header */}
+        <div className="section-header">
+          <div className="section-kicker">
+            <span>Career Milestones</span>
+          </div>
+          <h2 className="section-title">Industry experience &amp; professional background.</h2>
+          <p className="section-subtitle">
+            Hands-on software development work within collaborative engineering teams, structured Agile sprints, and disciplined version control workflows.
           </p>
         </div>
 
-        <div className="exp-grid">
-          <article className="gcard exp reveal in" data-tilt data-tilt-max="8">
-            <div className="exp-top">
-              <div>
-                <h3>Software Developer Intern</h3>
-                <p className="org">Osizone · Varanasi, India</p>
+        {/* Timeline Layout */}
+        <div className="experience-editorial-timeline">
+          {experienceData.map((exp, idx) => (
+            <div key={idx} className="timeline-entry-card">
+              {/* Timeline Header Row */}
+              <div className="timeline-entry-top">
+                <div className="timeline-role-info">
+                  <div className="timeline-type-pill">
+                    <Briefcase size={13} />
+                    <span>{exp.type}</span>
+                  </div>
+                  <h3 className="timeline-role-title">{exp.role}</h3>
+                  <div className="timeline-meta-bar">
+                    <span className="timeline-company-name">{exp.company}</span>
+                    <span className="timeline-meta-divider" aria-hidden="true">·</span>
+                    <span className="timeline-loc-tag">
+                      <MapPin size={13} />
+                      <span>{exp.location}</span>
+                    </span>
+                  </div>
+                </div>
+
+                <div className="timeline-period-container">
+                  <Calendar size={14} className="timeline-period-icon" />
+                  <span className="timeline-period-text">{exp.period}</span>
+                </div>
               </div>
-              <span className="exp-date">Sept 2025 — March 2026</span>
-            </div>
 
-            <ul className="exp-list">
-              <li>
-                Built interactive GUI desktop applications — including logic calculation engines and
-                interactive games — using modular programming and clean design principles.
-              </li>
-              <li>
-                Worked inside an Agile sprint lifecycle with active Git repositories, version
-                control workflows and code reviews.
-              </li>
-              <li>
-                Optimised core algorithmic routines and handled structured data operations to
-                improve application performance and responsiveness.
-              </li>
-            </ul>
+              {/* Summary Description */}
+              <p className="timeline-summary-text">{exp.summary}</p>
 
-            <div className="tags">
-              <span className="tag">Agile</span>
-              <span className="tag">Git</span>
-              <span className="tag">Code Review</span>
-              <span className="tag">Modular Programming</span>
+              {/* Responsibilities List */}
+              <div className="timeline-responsibilities-block">
+                <h4 className="responsibilities-title">Core Contributions &amp; Scope:</h4>
+                <ul className="timeline-bullets">
+                  {exp.responsibilities.map((resp, rIdx) => (
+                    <li key={rIdx}>
+                      <CheckCircle size={15} className="bullet-check-icon" />
+                      <span>{resp}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Technologies / Skills Tags */}
+              <div className="timeline-tags-row">
+                <span className="timeline-tags-label">Methodologies &amp; Tech:</span>
+                <div className="timeline-tags-group">
+                  {exp.tags.map((tag, tIdx) => (
+                    <span key={tIdx} className="timeline-tech-pill">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
-          </article>
+          ))}
         </div>
       </div>
     </section>

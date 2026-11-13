@@ -1,28 +1,28 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
+import { personalData } from "@/data/portfolio";
+import { ArrowDownToLine } from "lucide-react";
+import { GithubIcon } from "./GithubIcon";
 
 export default function Navbar() {
   const [isStuck, setIsStuck] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
+  const [activeSection, setActiveSection] = useState("hero");
 
   useEffect(() => {
     const onScroll = () => {
-      const y = window.scrollY || document.documentElement.scrollTop;
-      setIsStuck(y > 12);
+      setIsStuck((window.scrollY || document.documentElement.scrollTop) > 20);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 1080) {
+      if (window.innerWidth > 940) {
         setMenuOpen(false);
-        document.body.classList.remove("locked");
+        document.body.classList.remove("menu-locked");
       }
     };
     window.addEventListener("resize", handleResize);
@@ -40,7 +40,7 @@ export default function Navbar() {
           }
         });
       },
-      { rootMargin: "-45% 0px -50% 0px" }
+      { rootMargin: "-40% 0px -55% 0px" }
     );
 
     sections.forEach((s) => observer.observe(s));
@@ -48,55 +48,46 @@ export default function Navbar() {
   }, []);
 
   const toggleMenu = () => {
-    const nextState = !menuOpen;
-    setMenuOpen(nextState);
-    if (nextState) {
-      document.body.classList.add("locked");
+    const next = !menuOpen;
+    setMenuOpen(next);
+    if (next) {
+      document.body.classList.add("menu-locked");
     } else {
-      document.body.classList.remove("locked");
+      document.body.classList.remove("menu-locked");
     }
   };
 
   const closeMenu = () => {
     setMenuOpen(false);
-    document.body.classList.remove("locked");
+    document.body.classList.remove("menu-locked");
   };
 
   const menuItems = [
-    { label: "Home", href: "#home", id: "home" },
+    { label: "Home", href: "#hero", id: "hero" },
     { label: "About", href: "#about", id: "about" },
-    { label: "Experience", href: "#experience", id: "experience" },
-    { label: "Education", href: "#education", id: "education" },
     { label: "Skills", href: "#skills", id: "skills" },
+    { label: "Experience", href: "#experience", id: "experience" },
     { label: "Projects", href: "#projects", id: "projects" },
+    { label: "Education", href: "#education", id: "education" },
     { label: "Achievements", href: "#achievements", id: "achievements" },
     { label: "Contact", href: "#contact", id: "contact" },
   ];
 
   return (
-    <header className={`nav ${isStuck ? "stuck" : ""}`} id="topNav">
-      <div className="wrap nav-inner">
-        <a className="brand" href="#home" onClick={closeMenu}>
-          <span className="brand-mark">
-            <Image
-              src="/assets/photo.jpg"
-              alt="RY"
-              width={36}
-              height={36}
-              className="rounded-[11px] object-cover"
-            />
-          </span>
-          Rajeev Yadav
+    <header className={`navbar ${isStuck ? "navbar-scrolled" : ""}`}>
+      <div className="container navbar-inner">
+        <a className="navbar-brand" href="#hero" onClick={closeMenu}>
+          <span className="brand-badge">{personalData.initials}</span>
+          <span>{personalData.name}</span>
         </a>
 
-        <nav>
-          <ul className={`menu ${menuOpen ? "open" : ""}`} id="menu">
+        <nav className="desktop-nav" aria-label="Main Navigation">
+          <ul className="nav-list">
             {menuItems.map((item) => (
               <li key={item.id}>
                 <a
                   href={item.href}
-                  className={activeSection === item.id ? "active" : ""}
-                  onClick={closeMenu}
+                  className={`nav-link ${activeSection === item.id ? "active" : ""}`}
                 >
                   {item.label}
                 </a>
@@ -105,21 +96,14 @@ export default function Navbar() {
           </ul>
         </nav>
 
-        <div className="nav-cta">
-          <a className="btn btn-glass btn-sm js-resume" href="/assets/resume.pdf" download>
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-              <path d="M7 10l5 5 5-5M12 15V3" />
-            </svg>
-            Resume
+        <div className="navbar-actions">
+          <a
+            className="btn btn-secondary btn-sm"
+            href={personalData.resumePath}
+            download="Rajeev_Yadav_Resume.pdf"
+          >
+            <ArrowDownToLine size={14} />
+            <span>Resume</span>
           </a>
           <a
             className="btn btn-primary btn-sm"
@@ -127,24 +111,50 @@ export default function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 .5C5.73.5.5 5.73.5 12.02c0 5.1 3.29 9.42 7.86 10.95.57.1.78-.25.78-.55v-2.1c-3.2.7-3.87-1.37-3.87-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.5 3.17-1.18 3.17-1.18.63 1.59.23 2.77.12 3.06.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.26 5.69.41.36.78 1.06.78 2.14v3.17c0 .3.21.66.79.55A11.53 11.53 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z" />
-            </svg>
-            GitHub
+            <GithubIcon size={14} />
+            <span>GitHub</span>
           </a>
+
           <button
-            className="burger"
-            id="burger"
+            className={`hamburger-btn ${menuOpen ? "open" : ""}`}
             type="button"
-            aria-label="Menu"
+            aria-label="Navigation Menu"
             aria-expanded={menuOpen}
-            aria-controls="menu"
             onClick={toggleMenu}
           >
-            <span />
-            <span />
-            <span />
+            <span className="hamburger-line" />
+            <span className="hamburger-line" />
           </button>
+        </div>
+      </div>
+
+      <div className={`mobile-drawer ${menuOpen ? "open" : ""}`} aria-hidden={!menuOpen}>
+        <div className="mobile-drawer-content">
+          <ul className="mobile-nav-list">
+            {menuItems.map((item) => (
+              <li key={item.id}>
+                <a
+                  href={item.href}
+                  className={`mobile-nav-link ${activeSection === item.id ? "active" : ""}`}
+                  onClick={closeMenu}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <div>
+            <a
+              href={personalData.resumePath}
+              download="Rajeev_Yadav_Resume.pdf"
+              className="btn btn-secondary"
+              style={{ width: "100%" }}
+              onClick={closeMenu}
+            >
+              <ArrowDownToLine size={16} />
+              <span>Download Resume (PDF)</span>
+            </a>
+          </div>
         </div>
       </div>
     </header>

@@ -1,40 +1,28 @@
-import BackgroundEffects from "@/components/BackgroundEffects";
-import WelcomeBanner from "@/components/WelcomeBanner";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import DevShowcase from "@/components/DevShowcase";
-import Ticker from "@/components/Ticker";
 import About from "@/components/About";
-import Experience from "@/components/Experience";
-import Education from "@/components/Education";
 import Skills from "@/components/Skills";
+import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
+import Education from "@/components/Education";
 import Achievements from "@/components/Achievements";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import InteractiveCards from "@/components/InteractiveCards";
 
 export default function Home() {
   return (
     <>
-      <BackgroundEffects />
       <Navbar />
-      <WelcomeBanner />
-      <InteractiveCards />
-
-      <main>
+      <main id="main-content">
         <Hero />
-        <DevShowcase />
-        <Ticker />
         <About />
-        <Experience />
-        <Education />
         <Skills />
+        <Experience />
         <Projects />
+        <Education />
         <Achievements />
         <Contact />
       </main>
-
       <Footer />
     </>
   );

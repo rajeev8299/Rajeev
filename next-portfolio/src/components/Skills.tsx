@@ -1,50 +1,60 @@
+import { skillCategories } from "@/data/portfolio";
+import { Layout, Palette, Code, Terminal, CheckCircle2 } from "lucide-react";
+
 export default function Skills() {
-  const skillCategories = [
-    {
-      title: "Core Frontend",
-      desc: "Daily driver technologies I use to build user-facing products.",
-      items: ["HTML5", "CSS3 / Modern CSS", "JavaScript (ES6+)", "TypeScript", "React", "Next.js"],
-    },
-    {
-      title: "Design & UX Principles",
-      desc: "Techniques I care about to make websites feel intuitive.",
-      items: ["Mobile-first Responsive Design", "Flexbox & Grid Systems", "Clean Typography", "Micro-interactions", "Accessibility (a11y)"],
-    },
-    {
-      title: "Tools & Workflow",
-      desc: "My software environment and development ecosystem.",
-      items: ["Git & GitHub", "VS Code", "Vercel / Netlify", "Figma to Code", "Node / npm ecosystem"],
-    },
-  ];
+  const getCategoryIcon = (iconName: string) => {
+    switch (iconName) {
+      case "layout":
+        return <Layout size={18} />;
+      case "palette":
+        return <Palette size={18} />;
+      case "code":
+        return <Code size={18} />;
+      case "terminal":
+        return <Terminal size={18} />;
+      default:
+        return <Code size={18} />;
+    }
+  };
 
   return (
-    <section id="skills" className="stage">
-      <div className="wrap">
-        <div className="reveal in">
-          <span className="eyebrow">Skills &amp; Toolkit</span>
-          <h2 className="section-title">
-            Technologies I <span className="thin">work with</span>
-          </h2>
-          <p className="section-sub">
-            The practical skills, languages, and tools I use to bring ideas to reality.
+    <section id="skills" className="section skills-section" aria-label="Technical Skills & Competencies">
+      <div className="container">
+        {/* Section Header */}
+        <div className="section-header">
+          <div className="section-kicker">
+            <span>Engineering Toolkit</span>
+          </div>
+          <h2 className="section-title">Verified tools, languages &amp; technologies.</h2>
+          <p className="section-subtitle">
+            Curated technical stack focused on scalable component architectures, robust typing, accessible user interfaces, and reliable modern workflows.
           </p>
         </div>
 
-        <div className="human-skills-grid">
-          {skillCategories.map((cat) => (
-            <div key={cat.title} className="gcard human-skill-card reveal in" data-tilt data-tilt-max="5">
-              <div className="human-skill-head">
-                <h3>{cat.title}</h3>
-                <p>{cat.desc}</p>
+        {/* Skills Category Grid */}
+        <div className="skills-editorial-grid">
+          {skillCategories.map((cat, idx) => (
+            <div key={idx} className="skills-category-panel">
+              <div className="skills-panel-header">
+                <div className="skills-panel-icon-box">
+                  {getCategoryIcon(cat.iconName)}
+                </div>
+                <div>
+                  <span className="skills-panel-index">Group 0{idx + 1}</span>
+                  <h3 className="skills-panel-title">{cat.title}</h3>
+                </div>
               </div>
-              <ul className="human-skill-list">
-                {cat.items.map((it) => (
-                  <li key={it}>
-                    <span className="skill-check">✓</span>
-                    <span>{it}</span>
-                  </li>
+
+              <p className="skills-panel-desc">{cat.desc}</p>
+
+              <div className="skills-chips-cluster">
+                {cat.skills.map((skill, sIdx) => (
+                  <span key={sIdx} className="skill-chip-item">
+                    <CheckCircle2 size={12} className="skill-chip-check" />
+                    <span>{skill}</span>
+                  </span>
                 ))}
-              </ul>
+              </div>
             </div>
           ))}
         </div>

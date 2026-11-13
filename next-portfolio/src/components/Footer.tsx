@@ -1,61 +1,73 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { personalData } from "@/data/portfolio";
+import { ArrowUp, Heart, MapPin } from "lucide-react";
+import { GithubIcon } from "./GithubIcon";
 
 export default function Footer() {
-  const [showToTop, setShowToTop] = useState(false);
-  const [year] = useState(() => new Date().getFullYear().toString());
-
-  useEffect(() => {
-    const onScroll = () => {
-      const y = window.scrollY || document.documentElement.scrollTop;
-      setShowToTop(y > 640);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const currentYear = new Date().getFullYear();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
-    <>
-      <footer>
-        <div className="wrap foot">
-          <span>Designed &amp; hand-coded by Rajeev Yadav with Next.js &bull; &copy; {year}</span>
-          <div className="foot-links">
-            <a href="https://github.com/rajeev8299" target="_blank" rel="noopener noreferrer">
-              GitHub
+    <footer className="footer-editorial" role="contentinfo">
+      <div className="container">
+        {/* Top Branding & Nav Row */}
+        <div className="footer-editorial-top">
+          <div className="footer-brand-lockup">
+            <span className="brand-badge">{personalData.initials}</span>
+            <div>
+              <span className="footer-name-heading">{personalData.name}</span>
+              <p className="footer-role-line">
+                {personalData.role} · <MapPin size={11} style={{ display: "inline" }} /> {personalData.location}
+              </p>
+            </div>
+          </div>
+
+          <nav className="footer-nav-menu" aria-label="Footer Quick Navigation">
+            <a href="#hero" className="footer-nav-anchor">Home</a>
+            <a href="#about" className="footer-nav-anchor">About</a>
+            <a href="#skills" className="footer-nav-anchor">Skills</a>
+            <a href="#experience" className="footer-nav-anchor">Experience</a>
+            <a href="#projects" className="footer-nav-anchor">Projects</a>
+            <a href="#education" className="footer-nav-anchor">Education</a>
+            <a href="#achievements" className="footer-nav-anchor">Achievements</a>
+            <a href="#contact" className="footer-nav-anchor">Contact</a>
+          </nav>
+
+          <button
+            type="button"
+            className="btn btn-secondary btn-sm footer-top-btn"
+            onClick={scrollToTop}
+            aria-label="Back to top"
+          >
+            <ArrowUp size={14} />
+            <span>Top</span>
+          </button>
+        </div>
+
+        {/* Bottom Rights & Social Bar */}
+        <div className="footer-editorial-bottom">
+          <p className="footer-copyright-note">
+            &copy; {currentYear} {personalData.name}. Designed &amp; engineered with Next.js 16, React 19, TypeScript &amp; Modern CSS.
+          </p>
+
+          <div className="footer-links-cluster">
+            <a href="https://github.com/rajeev8299" target="_blank" rel="noopener noreferrer" className="footer-sub-link">
+              <GithubIcon size={14} />
+              <span>GitHub</span>
             </a>
-            <a href="/assets/resume.pdf" download className="js-resume">
-              Resume
+            <a href={personalData.resumePath} download className="footer-sub-link">
+              Resume PDF
             </a>
-            <a href="mailto:rajeev829927@gmail.com">Email</a>
-            <a href="#home">Back to top</a>
+            <a href={`mailto:${personalData.email}`} className="footer-sub-link">
+              {personalData.email}
+            </a>
           </div>
         </div>
-      </footer>
-
-      <button
-        className={`to-top ${showToTop ? "show" : ""}`}
-        id="toTop"
-        type="button"
-        aria-label="Back to top"
-        onClick={scrollToTop}
-      >
-        <svg
-          aria-hidden="true"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M12 19V5M5 12l7-7 7 7" />
-        </svg>
-      </button>
-    </>
+      </div>
+    </footer>
   );
 }

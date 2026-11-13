@@ -1,131 +1,257 @@
 "use client";
 
 import { useState } from "react";
+import { personalData } from "@/data/portfolio";
+import { Mail, Phone, MapPin, Copy, Check, ArrowUpRight, Send, Download } from "lucide-react";
+import { GithubIcon } from "./GithubIcon";
 
 export default function Contact() {
-  const [copyText, setCopyText] = useState("Copy email");
+  const [copied, setCopied] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [status, setStatus] = useState({ state: "idle", message: "" });
 
-  const handleCopy = () => {
-    const mail = "rajeev829927@gmail.com";
-    const done = () => {
-      setCopyText("Copied!");
-      setTimeout(() => setCopyText("Copy email"), 1800);
-    };
-
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(mail).then(done).catch(() => fallbackCopy(mail));
-    } else {
-      fallbackCopy(mail);
-    }
+  const handleCopyEmail = () => {
+    navigator.clipboard
+      .writeText(personalData.email)
+      .then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2200);
+      })
+      .catch(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2200);
+      });
   };
 
-  const fallbackCopy = (mail: string) => {
-    const t = document.createElement("textarea");
-    t.value = mail;
-    t.style.position = "fixed";
-    t.style.opacity = "0";
-    document.body.appendChild(t);
-    t.select();
-    try {
-      document.execCommand("copy");
-      setCopyText("Copied!");
-      setTimeout(() => setCopyText("Copy email"), 1800);
-    } catch {
-      setCopyText(mail);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email || !formData.message) {
+      setStatus({ state: "error", message: "Please fill in all required fields." });
+      return;
     }
-    document.body.removeChild(t);
+    const subject = encodeURIComponent(formData.subject || "Portfolio Contact Inquiry");
+    const body = encodeURIComponent(`From: ${formData.name} (${formData.email})\n\nMessage:\n${formData.message}`);
+    window.location.href = `mailto:${personalData.email}?subject=${subject}&body=${body}`;
+    setStatus({
+      state: "success",
+      message: "Opening your mail client with pre-filled message details.",
+    });
   };
 
   return (
-    <section id="contact" className="stage">
-      <div className="wrap">
-        <div className="gcard contact-card reveal in" data-tilt data-tilt-max="4">
-          <span className="eyebrow">Get in touch</span>
-          <h2>
-            Let&apos;s build something <span className="grad">real</span>
-          </h2>
-          <p>
-            Whether you have a job opportunity, freelance project, or just want to discuss frontend ideas — 
-            I reply to every message personally. Feel free to shoot me an email or call!
+    <section id="contact" className="section contact-section" aria-label="Contact Rajeev Yadav">
+      <div className="container">
+        {/* Section Header */}
+        <div className="section-header">
+          <div className="section-kicker">
+            <span>Direct Channels</span>
+          </div>
+          <h2 className="section-title">Let&apos;s build something exceptional.</h2>
+          <p className="section-subtitle">
+            Whether you are considering me for a full-time frontend role, discussing architectural opportunities, or seeking technical collaboration — I look forward to connecting.
           </p>
+        </div>
 
-          <div className="contact-actions">
-            <a className="btn btn-primary" href="mailto:rajeev829927@gmail.com">
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+        {/* Contact Grid */}
+        <div className="contact-editorial-grid">
+          {/* Left Column: Direct Info Card */}
+          <div className="contact-channels-panel">
+            <h3 className="channels-panel-title">Direct Connection Points</h3>
+            <p className="channels-panel-desc">
+              Reach out directly via email, phone, or verified social networks. I typically reply within 24 hours.
+            </p>
+
+            <div className="contact-touchpoints-stack">
+              {/* Email Touchpoint */}
+              <div className="touchpoint-card">
+                <div className="touchpoint-icon-box blue-box">
+                  <Mail size={18} />
+                </div>
+                <div className="touchpoint-body">
+                  <span className="touchpoint-label">Primary Email</span>
+                  <a href={`mailto:${personalData.email}`} className="touchpoint-val">
+                    {personalData.email}
+                  </a>
+                </div>
+                <button
+                  type="button"
+                  className="btn btn-secondary btn-sm copy-touchpoint-btn"
+                  onClick={handleCopyEmail}
+                  aria-label="Copy email address"
+                >
+                  {copied ? <Check size={14} /> : <Copy size={14} />}
+                  <span>{copied ? "Copied" : "Copy"}</span>
+                </button>
+              </div>
+
+              {/* Phone Touchpoint */}
+              <div className="touchpoint-card">
+                <div className="touchpoint-icon-box teal-box">
+                  <Phone size={18} />
+                </div>
+                <div className="touchpoint-body">
+                  <span className="touchpoint-label">Direct Phone &amp; WhatsApp</span>
+                  <a href={`tel:${personalData.phone.replace(/\s+/g, "")}`} className="touchpoint-val">
+                    {personalData.displayPhone}
+                  </a>
+                </div>
+              </div>
+
+              {/* Location Touchpoint */}
+              <div className="touchpoint-card">
+                <div className="touchpoint-icon-box amber-box">
+                  <MapPin size={18} />
+                </div>
+                <div className="touchpoint-body">
+                  <span className="touchpoint-label">Location Base</span>
+                  <span className="touchpoint-val">{personalData.location}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Actions Bar */}
+            <div className="channels-actions-bar">
+              <a
+                href={personalData.resumePath}
+                download="Rajeev_Yadav_Resume.pdf"
+                className="btn btn-primary btn-sm"
               >
-                <rect x="2" y="4" width="20" height="16" rx="2" />
-                <path d="m22 7-10 6L2 7" />
-              </svg>
-              Email me
-            </a>
-            <a className="btn btn-glass" href="tel:+918299279529">
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                <Download size={14} />
+                <span>Download Resume (PDF)</span>
+              </a>
+              <a
+                href="https://github.com/rajeev8299"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-secondary btn-sm"
               >
-                <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z" />
-              </svg>
-              +91&nbsp;82992&nbsp;79529
-            </a>
-            <a className="btn btn-glass js-resume" href="/assets/resume.pdf" download>
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                <path d="M7 10l5 5 5-5M12 15V3" />
-              </svg>
-              Download resume
-            </a>
-            <a
-              className="btn btn-glass"
-              href="https://github.com/rajeev8299"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 .5C5.73.5.5 5.73.5 12.02c0 5.1 3.29 9.42 7.86 10.95.57.1.78-.25.78-.55v-2.1c-3.2.7-3.87-1.37-3.87-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.5 3.17-1.18 3.17-1.18.63 1.59.23 2.77.12 3.06.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.26 5.69.41.36.78 1.06.78 2.14v3.17c0 .3.21.66.79.55A11.53 11.53 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z" />
-              </svg>
-              GitHub
-            </a>
-            <button className="btn btn-glass" id="copyBtn" type="button" onClick={handleCopy}>
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <rect x="9" y="9" width="12" height="12" rx="2" />
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-              </svg>
-              <span id="copyText">{copyText}</span>
-            </button>
+                <GithubIcon size={14} />
+                <span>GitHub Profile</span>
+              </a>
+            </div>
+
+            {/* Verified Social Networks */}
+            <div className="verified-networks-tray">
+              <span className="tray-label">Verified Networks:</span>
+              <div className="tray-chips">
+                {personalData.socials.map((s, idx) => (
+                  <a
+                    key={idx}
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="network-chip"
+                    aria-label={`Open ${s.name}`}
+                  >
+                    <span>{s.name}</span>
+                    <ArrowUpRight size={12} />
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
 
-          <p className="mail-note">
-            Direct: <code>rajeev829927@gmail.com</code> · <code>+91&nbsp;82992&nbsp;79529</code> ·
-            Varanasi, UP
-          </p>
+          {/* Right Column: Direct Inquiry Form */}
+          <div className="contact-form-panel">
+            <h3 className="form-panel-title">Send a Message</h3>
+            <p className="form-panel-desc">
+              Have an opening or project inquiry? Fill out the details below to initiate direct email contact.
+            </p>
+
+            <form onSubmit={handleSubmit} className="contact-editorial-form" noValidate>
+              <div className="form-field-group">
+                <label htmlFor="contact-name" className="field-label">
+                  Your Full Name <span className="required-star">*</span>
+                </label>
+                <input
+                  id="contact-name"
+                  type="text"
+                  name="name"
+                  required
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="e.g. Priyanshu Sharma"
+                  className="field-input"
+                />
+              </div>
+
+              <div className="form-field-group">
+                <label htmlFor="contact-email" className="field-label">
+                  Your Email Address <span className="required-star">*</span>
+                </label>
+                <input
+                  id="contact-email"
+                  type="email"
+                  name="email"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="e.g. priyanshu@company.com"
+                  className="field-input"
+                />
+              </div>
+
+              <div className="form-field-group">
+                <label htmlFor="contact-subject" className="field-label">
+                  Subject / Topic
+                </label>
+                <input
+                  id="contact-subject"
+                  type="text"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  placeholder="e.g. Frontend Developer Role / Project Proposal"
+                  className="field-input"
+                />
+              </div>
+
+              <div className="form-field-group">
+                <label htmlFor="contact-message" className="field-label">
+                  Your Message <span className="required-star">*</span>
+                </label>
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  required
+                  rows={4}
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Tell me about your team, role, or project..."
+                  className="field-textarea"
+                />
+              </div>
+
+              {status.message && (
+                <div className={`form-status-banner ${status.state}`}>{status.message}</div>
+              )}
+
+              <div className="form-submit-row">
+                <button type="submit" className="btn btn-primary">
+                  <Send size={16} />
+                  <span>Send Message Directly</span>
+                </button>
+                <a
+                  href={`mailto:${personalData.email}?subject=${encodeURIComponent(
+                    formData.subject || "Portfolio Inquiry"
+                  )}&body=${encodeURIComponent(formData.message || "")}`}
+                  className="btn btn-secondary btn-sm"
+                >
+                  <span>Open In Mail App</span>
+                  <ArrowUpRight size={14} />
+                </a>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </section>
