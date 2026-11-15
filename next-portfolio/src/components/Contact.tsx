@@ -55,19 +55,19 @@ export default function Contact() {
           <div className="section-kicker">
             <span>Contact</span>
           </div>
-          <h2 className="section-title">Let&apos;s build something meaningful.</h2>
+          <h2 className="section-title">Get In Touch</h2>
           <p className="section-subtitle">
             Open to frontend opportunities and interesting web projects.
           </p>
         </div>
 
-        {/* Contact Grid */}
+        {/* Contact 50:50 Grid */}
         <div className="contact-editorial-grid">
-          {/* Left Column: Direct Info Card */}
+          {/* Left Column: Direct Connection */}
           <div className="contact-channels-panel">
-            <h3 className="channels-panel-title">Direct Connection Points</h3>
+            <h3 className="channels-panel-title">Direct Connection</h3>
             <p className="channels-panel-desc">
-              Reach out directly via email, phone, or verified social networks. I typically reply within 24 hours.
+              Reach me through these channels.
             </p>
 
             <div className="contact-touchpoints-stack">
@@ -77,7 +77,7 @@ export default function Contact() {
                   <Mail size={18} />
                 </div>
                 <div className="touchpoint-body">
-                  <span className="touchpoint-label">Primary Email</span>
+                  <span className="touchpoint-label">Email</span>
                   <a href={`mailto:${personalData.email}`} className="touchpoint-val">
                     {personalData.email}
                   </a>
@@ -99,7 +99,7 @@ export default function Contact() {
                   <Phone size={18} />
                 </div>
                 <div className="touchpoint-body">
-                  <span className="touchpoint-label">Direct Phone &amp; WhatsApp</span>
+                  <span className="touchpoint-label">Phone &amp; WhatsApp</span>
                   <a href={`tel:${personalData.phone.replace(/\s+/g, "")}`} className="touchpoint-val">
                     {personalData.displayPhone}
                   </a>
@@ -112,7 +112,7 @@ export default function Contact() {
                   <MapPin size={18} />
                 </div>
                 <div className="touchpoint-body">
-                  <span className="touchpoint-label">Location Base</span>
+                  <span className="touchpoint-label">Location</span>
                   <span className="touchpoint-val">{personalData.location}</span>
                 </div>
               </div>
@@ -123,48 +123,28 @@ export default function Contact() {
               <a
                 href={personalData.resumePath}
                 download="Rajeev_Yadav_Resume.pdf"
-                className="btn btn-primary btn-sm"
+                className="btn btn-secondary"
               >
-                <Download size={14} />
+                <Download size={15} />
                 <span>Download Resume (PDF)</span>
               </a>
               <a
                 href="https://github.com/rajeev8299"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-secondary btn-sm"
+                className="btn btn-outline"
               >
-                <GithubIcon size={14} />
+                <GithubIcon size={15} />
                 <span>GitHub Profile</span>
               </a>
             </div>
-
-            {/* Verified Social Networks */}
-            <div className="verified-networks-tray">
-              <span className="tray-label">Verified Networks:</span>
-              <div className="tray-chips">
-                {personalData.socials.map((s, idx) => (
-                  <a
-                    key={idx}
-                    href={s.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="network-chip"
-                    aria-label={`Open ${s.name}`}
-                  >
-                    <span>{s.name}</span>
-                    <ArrowUpRight size={12} />
-                  </a>
-                ))}
-              </div>
-            </div>
           </div>
 
-          {/* Right Column: Direct Inquiry Form */}
+          {/* Right Column: Send a Message */}
           <div className="contact-form-panel">
             <h3 className="form-panel-title">Send a Message</h3>
             <p className="form-panel-desc">
-              Have a project or opportunity? Send me a message.
+              Have a project or opportunity? Let&apos;s connect.
             </p>
 
             {/* Direct Inquiry Form with Professional 2-Column Responsive Grid */}

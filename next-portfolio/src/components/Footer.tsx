@@ -15,10 +15,7 @@ export default function Footer() {
     { href: "#hero", label: "Home" },
     { href: "#about", label: "About" },
     { href: "#skills", label: "Skills" },
-    { href: "#experience", label: "Experience" },
     { href: "#projects", label: "Projects" },
-    { href: "#education", label: "Education" },
-    { href: "#achievements", label: "Achievements" },
     { href: "#contact", label: "Contact" },
   ];
 
@@ -84,20 +81,10 @@ export default function Footer() {
                   className="footer-connect-link"
                 >
                   <FileText size={15} />
-                  <span>Download Resume (PDF)</span>
+                  <span>Resume (PDF)</span>
                 </a>
               </li>
             </ul>
-
-            <button
-              type="button"
-              className="footer-back-to-top-btn"
-              onClick={scrollToTop}
-              aria-label="Scroll back to top of page"
-            >
-              <ArrowUp size={14} />
-              <span>Back to Top</span>
-            </button>
           </div>
         </div>
 
@@ -107,28 +94,15 @@ export default function Footer() {
             &copy; {currentYear} {personalData.name}. All rights reserved.
           </p>
 
-          <div className="footer-bottom-links">
-            <a
-              href="https://github.com/rajeev8299"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer-bottom-link"
-            >
-              GitHub
-            </a>
-            <span className="footer-divider-dot" aria-hidden="true">·</span>
-            <a
-              href={personalData.resumePath}
-              download="Rajeev_Yadav_Resume.pdf"
-              className="footer-bottom-link"
-            >
-              Resume
-            </a>
-            <span className="footer-divider-dot" aria-hidden="true">·</span>
-            <a href={`mailto:${personalData.email}`} className="footer-bottom-link">
-              Email
-            </a>
-          </div>
+          <button
+            type="button"
+            className="footer-back-to-top-btn"
+            onClick={scrollToTop}
+            aria-label="Scroll back to top of page"
+          >
+            <ArrowUp size={13} />
+            <span>Back to Top</span>
+          </button>
         </div>
       </div>
     </footer>
