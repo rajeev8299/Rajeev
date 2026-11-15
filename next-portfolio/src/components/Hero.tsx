@@ -13,7 +13,7 @@ export default function Hero() {
           <div className="hero-copy-col">
             <div className="hero-tagline-kicker">
               <span className="kicker-rule" aria-hidden="true" />
-              <span className="kicker-text">Creative Frontend Developer &amp; Software Builder</span>
+              <span className="kicker-text">{personalData.role}</span>
             </div>
 
             <h1 className="hero-headline">
@@ -21,66 +21,41 @@ export default function Hero() {
             </h1>
 
             <p className="hero-subheading-tagline">
-              Engineering high-fidelity web interfaces where thoughtful aesthetic restraint meets resilient modern code.
+              {personalData.headline}
             </p>
 
             <p className="hero-mission-statement">
-              {personalData.bio} Combining an academic foundation in Computer Applications (MCA &amp; BCA) with hands-on software development experience to deliver fast, accessible, and durable digital products.
+              {personalData.supportingText}
             </p>
+
+            {/* Quick Tech Highlights Badge Row */}
+            <div className="hero-tech-pills">
+              {personalData.techHighlights.map((tech) => (
+                <span key={tech} className="hero-tech-pill-item">
+                  {tech}
+                </span>
+              ))}
+            </div>
 
             {/* Clear Primary Actions */}
             <div className="hero-actions-cluster">
               <a href="#projects" className="btn btn-primary btn-hero">
-                <span>Explore Selected Work</span>
+                <span>View Projects</span>
                 <ArrowRight size={16} />
-              </a>
-              <a href="#contact" className="btn btn-secondary btn-hero">
-                <Mail size={16} />
-                <span>Get In Touch</span>
               </a>
               <a
                 href={personalData.resumePath}
                 download="Rajeev_Yadav_Resume.pdf"
-                className="btn btn-outline btn-hero"
-                aria-label="Download Official Resume PDF"
+                className="btn btn-secondary btn-hero"
+                aria-label="Download Resume PDF"
               >
                 <FileText size={16} />
-                <span>Resume (PDF)</span>
+                <span>Download Resume</span>
               </a>
-            </div>
-
-            {/* Verified Communication Channels */}
-            <div className="hero-socials-group">
-              <span className="socials-prefix">Direct Channels:</span>
-              <div className="socials-chips">
-                <a
-                  href="https://github.com/rajeev8299"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-chip"
-                  title="GitHub Profile"
-                >
-                  <GithubIcon size={14} />
-                  <span>GitHub</span>
-                </a>
-                <a
-                  href={`mailto:${personalData.email}`}
-                  className="social-chip"
-                  title="Direct Email"
-                >
-                  <Mail size={14} />
-                  <span>Email</span>
-                </a>
-                <a
-                  href="https://wa.me/918299279529"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-chip"
-                  title="WhatsApp"
-                >
-                  <span>WhatsApp</span>
-                </a>
-              </div>
+              <a href="#contact" className="btn btn-outline btn-hero">
+                <Mail size={16} />
+                <span>Contact Me</span>
+              </a>
             </div>
           </div>
 

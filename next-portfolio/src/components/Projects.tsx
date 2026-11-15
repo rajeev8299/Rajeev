@@ -217,20 +217,6 @@ export default function Projects() {
                 <p className="featured-project-tagline">{featuredProject.tagline}</p>
                 <p className="featured-project-desc">{featuredProject.desc}</p>
 
-                {/* Problem Solved Callout */}
-                <div className="project-problem-box">
-                  <div className="problem-box-header">
-                    <strong>Challenge &amp; User Need:</strong>
-                  </div>
-                  <p>{featuredProject.problemSolved}</p>
-                </div>
-
-                {featuredProject.whyBuilt && (
-                  <div className="project-tech-focus-box">
-                    <strong>Architectural Focus:</strong> <span>{featuredProject.whyBuilt}</span>
-                  </div>
-                )}
-
                 <div className="project-tech-chips">
                   {featuredProject.tags.map((tag, tIdx) => (
                     <span key={tIdx} className="tech-tag-chip">
@@ -308,17 +294,6 @@ export default function Projects() {
                 </div>
 
                 <p className="standard-project-desc">{project.desc}</p>
-
-                {/* Problem Solved */}
-                <div className="standard-problem-note">
-                  <strong>Challenge Solved:</strong> <span>{project.problemSolved}</span>
-                </div>
-
-                {project.whyBuilt && (
-                  <div className="standard-why-note">
-                    <strong>Engineering Takeaway:</strong> <span>{project.whyBuilt}</span>
-                  </div>
-                )}
 
                 <div className="standard-tags-row">
                   {project.tags.map((tag, tIdx) => (

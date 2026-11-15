@@ -53,11 +53,11 @@ export default function Contact() {
         {/* Section Header */}
         <div className="section-header">
           <div className="section-kicker">
-            <span>Direct Channels</span>
+            <span>Contact</span>
           </div>
-          <h2 className="section-title">Let&apos;s build something exceptional.</h2>
+          <h2 className="section-title">Let&apos;s build something meaningful.</h2>
           <p className="section-subtitle">
-            Whether you are considering me for a full-time frontend role, discussing architectural opportunities, or seeking technical collaboration — I look forward to connecting.
+            Open to frontend opportunities and interesting web projects.
           </p>
         </div>
 
