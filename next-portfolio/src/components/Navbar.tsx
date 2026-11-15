@@ -12,14 +12,17 @@ export default function Navbar() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
-    // Check saved preference or system preference
-    const savedTheme = localStorage.getItem("portfolio-theme") as "light" | "dark" | null;
-    if (savedTheme) {
-      setTheme(savedTheme);
-      document.documentElement.setAttribute("data-theme", savedTheme);
-    } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      setTheme("dark");
-      document.documentElement.setAttribute("data-theme", "dark");
+    // Check saved preference or system preference after mount to avoid sync setState warning in effect
+    const currentTheme = (document.documentElement.getAttribute("data-theme") as "light" | "dark") ||
+      (localStorage.getItem("portfolio-theme") as "light" | "dark" | null) ||
+      (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    
+    if (currentTheme) {
+      // Defer state update to next microtask/tick to prevent cascading render warnings
+      queueMicrotask(() => {
+        setTheme(currentTheme);
+      });
+      document.documentElement.setAttribute("data-theme", currentTheme);
     }
   }, []);
 
