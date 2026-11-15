@@ -2351,29 +2351,31 @@ button {
    10. COMPLETE PROFESSIONAL FOOTER ARCHITECTURE
    ================================================== */
 .footer-site {
-  background-color: var(--bg-footer);
-  color: var(--footer-text);
-  padding: 2.5rem 0 1.25rem;
+  background-color: #20283A;
+  color: #F5F4F0;
+  padding: 34px 0 0;
   width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.footer-container {
-  width: min(100% - 48px, 1360px);
+.footer-inner {
+  width: min(100% - 40px, 1320px);
   margin-inline: auto;
 }
 
-.footer-main-grid {
+.footer-main {
   display: grid;
-  grid-template-columns: 1.4fr 1.1fr 1fr;
-  gap: 2.25rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: 40px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
 }
 
-@media (max-width: 900px) {
-  .footer-main-grid {
+@media (max-width: 1024px) {
+  .footer-main {
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 32px;
   }
 
   .footer-brand-column {
@@ -2382,9 +2384,10 @@ button {
 }
 
 @media (max-width: 600px) {
-  .footer-main-grid {
+  .footer-main {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 24px;
+    padding-bottom: 24px;
   }
 
   .footer-brand-column {
@@ -2392,148 +2395,183 @@ button {
   }
 }
 
-.footer-brand-header {
+/* Column 1: Personal Brand */
+.footer-brand-identity {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.footer-avatar-wrapper {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background-color: #2A3449;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.footer-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+}
+
+.footer-brand-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .footer-brand-name {
   font-family: var(--font-heading);
-  font-size: 1.1875rem;
-  font-weight: 700;
-  color: #FFFFFF;
+  font-size: 18px;
+  font-weight: 600;
+  color: #F5F4F0;
+  line-height: 1.25;
+  margin: 0;
 }
 
 .footer-brand-role {
-  font-size: 0.8125rem;
+  font-size: 14px;
   color: #B9C2D1;
+  margin: 0;
+  line-height: 1.3;
 }
 
 .footer-location-tag {
   display: inline-flex;
   align-items: center;
-  gap: 0.375rem;
-  font-size: 0.8125rem;
+  gap: 6px;
+  font-size: 13.5px;
   color: #B9C2D1;
-  opacity: 0.9;
+  margin: 0;
+  line-height: 1.4;
 }
 
+.footer-location-icon {
+  color: #AAB9D4;
+  flex-shrink: 0;
+}
+
+/* Headings */
 .footer-column-heading {
   font-family: var(--font-heading);
-  font-size: 0.75rem;
+  font-size: 13.5px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #FFFFFF;
-  margin-bottom: 0.875rem;
+  color: #F5F4F0;
+  margin: 0 0 14px 0;
+  line-height: 1.2;
 }
 
-.footer-nav-list {
+/* Column 2: Navigation Grid */
+.footer-nav-grid {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.5rem 1rem;
+  gap: 8px 16px;
   padding: 0;
   margin: 0;
 }
 
 .footer-nav-link {
-  font-size: 0.8125rem;
+  font-size: 14px;
   color: #B9C2D1;
   text-decoration: none;
-  transition: color var(--transition);
+  transition: color 0.2s ease;
   display: inline-block;
+  line-height: 1.4;
 }
 
 .footer-nav-link:hover {
-  color: #FFFFFF;
+  color: #F5F4F0;
 }
 
+/* Column 3: Connect List */
 .footer-connect-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 9px;
   padding: 0;
-  margin: 0 0 1rem 0;
+  margin: 0;
 }
 
 .footer-connect-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.8125rem;
+  gap: 8px;
+  font-size: 13.5px;
   color: #B9C2D1;
   text-decoration: none;
-  transition: color var(--transition);
+  transition: color 0.2s ease;
+  line-height: 1.4;
+}
+
+.footer-connect-link svg {
+  color: #AAB9D4;
+  flex-shrink: 0;
 }
 
 .footer-connect-link:hover {
-  color: #FFFFFF;
-}
-
-.footer-back-to-top-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  background-color: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.16);
   color: #F5F4F0;
-  font-family: var(--font-heading);
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 0.375rem 0.75rem;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: all var(--transition);
 }
 
-.footer-back-to-top-btn:hover {
-  background-color: rgba(255, 255, 255, 0.18);
+.footer-connect-link:hover svg {
   color: #FFFFFF;
-  transform: translateY(-1px);
 }
 
+/* Bottom Bar */
 .footer-bottom-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 1rem;
-  padding-top: 1.25rem;
-  font-size: 0.75rem;
+  gap: 12px;
+  padding: 18px 0 22px;
+  font-size: 12.5px;
   color: #B9C2D1;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 600px) {
   .footer-bottom-row {
     flex-direction: column;
     align-items: flex-start;
+    gap: 12px;
+    padding: 16px 0 20px;
   }
 }
 
 .footer-copyright {
   margin: 0;
-}
-
-.footer-bottom-links {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.footer-bottom-link {
   color: #B9C2D1;
-  text-decoration: none;
-  transition: color var(--transition);
 }
 
-.footer-bottom-link:hover {
+.footer-back-to-top-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #F5F4F0;
+  font-family: var(--font-heading);
+  font-size: 12.5px;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.footer-back-to-top-btn:hover {
+  background-color: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.24);
   color: #FFFFFF;
-}
-
-.footer-divider-dot {
-  color: rgba(255, 255, 255, 0.3);
 }
