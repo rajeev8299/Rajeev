@@ -1,7 +1,7 @@
 "use client";
 
 import { personalData } from "@/data/portfolio";
-import { ArrowUp, Heart, MapPin } from "lucide-react";
+import { ArrowUp, Mail, FileText, MapPin } from "lucide-react";
 import { GithubIcon } from "./GithubIcon";
 
 export default function Footer() {
@@ -11,59 +11,122 @@ export default function Footer() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const navLinks = [
+    { href: "#hero", label: "Home" },
+    { href: "#about", label: "About" },
+    { href: "#skills", label: "Skills" },
+    { href: "#experience", label: "Experience" },
+    { href: "#projects", label: "Projects" },
+    { href: "#education", label: "Education" },
+    { href: "#achievements", label: "Achievements" },
+    { href: "#contact", label: "Contact" },
+  ];
+
   return (
-    <footer className="footer-editorial" role="contentinfo">
-      <div className="container">
-        {/* Top Branding & Nav Row */}
-        <div className="footer-editorial-top">
-          <div className="footer-brand-lockup">
-            <span className="brand-badge">{personalData.initials}</span>
-            <div>
-              <span className="footer-name-heading">{personalData.name}</span>
-              <p className="footer-role-line">
-                {personalData.role} · <MapPin size={11} style={{ display: "inline" }} /> {personalData.location}
-              </p>
+    <footer className="footer-site" role="contentinfo">
+      <div className="container footer-container">
+        {/* Top 3-Column Section */}
+        <div className="footer-main-grid">
+          {/* Column 1: Personal Brand */}
+          <div className="footer-brand-column">
+            <div className="footer-brand-header">
+              <span className="brand-badge">{personalData.initials}</span>
+              <div>
+                <h3 className="footer-brand-name">{personalData.name}</h3>
+                <p className="footer-brand-role">{personalData.role}</p>
+              </div>
             </div>
+            <p className="footer-location-tag">
+              <MapPin size={13} aria-hidden="true" />
+              <span>{personalData.location}</span>
+            </p>
           </div>
 
-          <nav className="footer-nav-menu" aria-label="Footer Quick Navigation">
-            <a href="#hero" className="footer-nav-anchor">Home</a>
-            <a href="#about" className="footer-nav-anchor">About</a>
-            <a href="#skills" className="footer-nav-anchor">Skills</a>
-            <a href="#experience" className="footer-nav-anchor">Experience</a>
-            <a href="#projects" className="footer-nav-anchor">Projects</a>
-            <a href="#education" className="footer-nav-anchor">Education</a>
-            <a href="#achievements" className="footer-nav-anchor">Achievements</a>
-            <a href="#contact" className="footer-nav-anchor">Contact</a>
-          </nav>
+          {/* Column 2: Quick Navigation */}
+          <div className="footer-nav-column">
+            <h4 className="footer-column-heading">Navigation</h4>
+            <ul className="footer-nav-list">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} className="footer-nav-link">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-          <button
-            type="button"
-            className="btn btn-secondary btn-sm footer-top-btn"
-            onClick={scrollToTop}
-            aria-label="Back to top"
-          >
-            <ArrowUp size={14} />
-            <span>Top</span>
-          </button>
+          {/* Column 3: Connect & Actions */}
+          <div className="footer-connect-column">
+            <h4 className="footer-column-heading">Connect</h4>
+            <ul className="footer-connect-list">
+              <li>
+                <a
+                  href="https://github.com/rajeev8299"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-connect-link"
+                >
+                  <GithubIcon size={15} />
+                  <span>GitHub Profile</span>
+                </a>
+              </li>
+              <li>
+                <a href={`mailto:${personalData.email}`} className="footer-connect-link">
+                  <Mail size={15} />
+                  <span>{personalData.email}</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={personalData.resumePath}
+                  download="Rajeev_Yadav_Resume.pdf"
+                  className="footer-connect-link"
+                >
+                  <FileText size={15} />
+                  <span>Download Resume (PDF)</span>
+                </a>
+              </li>
+            </ul>
+
+            <button
+              type="button"
+              className="footer-back-to-top-btn"
+              onClick={scrollToTop}
+              aria-label="Scroll back to top of page"
+            >
+              <ArrowUp size={14} />
+              <span>Back to Top</span>
+            </button>
+          </div>
         </div>
 
-        {/* Bottom Rights & Social Bar */}
-        <div className="footer-editorial-bottom">
-          <p className="footer-copyright-note">
-            &copy; {currentYear} {personalData.name}. Designed &amp; engineered with Next.js 16, React 19, TypeScript &amp; Modern CSS.
+        {/* Bottom Section with Divider */}
+        <div className="footer-bottom-row">
+          <p className="footer-copyright">
+            &copy; {currentYear} {personalData.name}. All rights reserved.
           </p>
 
-          <div className="footer-links-cluster">
-            <a href="https://github.com/rajeev8299" target="_blank" rel="noopener noreferrer" className="footer-sub-link">
-              <GithubIcon size={14} />
-              <span>GitHub</span>
+          <div className="footer-bottom-links">
+            <a
+              href="https://github.com/rajeev8299"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-bottom-link"
+            >
+              GitHub
             </a>
-            <a href={personalData.resumePath} download className="footer-sub-link">
-              Resume PDF
+            <span className="footer-divider-dot" aria-hidden="true">·</span>
+            <a
+              href={personalData.resumePath}
+              download="Rajeev_Yadav_Resume.pdf"
+              className="footer-bottom-link"
+            >
+              Resume
             </a>
-            <a href={`mailto:${personalData.email}`} className="footer-sub-link">
-              {personalData.email}
+            <span className="footer-divider-dot" aria-hidden="true">·</span>
+            <a href={`mailto:${personalData.email}`} className="footer-bottom-link">
+              Email
             </a>
           </div>
         </div>
