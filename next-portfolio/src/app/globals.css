@@ -629,47 +629,6 @@ button {
   }
 }
 
-.hero-eyebrow-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 2.5rem;
-  padding-bottom: 1.25rem;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.hero-status-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: var(--pill-bg);
-  border: 1px solid var(--border-color);
-  padding: 0.375rem 0.875rem;
-  border-radius: var(--radius-full);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  transition: var(--theme-transition);
-}
-
-.status-indicator-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: var(--blue-primary);
-}
-
-.hero-location-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  font-size: 0.875rem;
-  color: var(--text-secondary);
-  font-weight: 500;
-}
-
 .hero-editorial-grid {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;

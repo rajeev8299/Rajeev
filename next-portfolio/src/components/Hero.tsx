@@ -1,24 +1,12 @@
 import Image from "next/image";
 import { personalData, metrics } from "@/data/portfolio";
-import { ArrowRight, Mail, MapPin, CheckCircle2, FileText, Sparkles, Terminal, Code2 } from "lucide-react";
+import { ArrowRight, Mail, CheckCircle2, FileText } from "lucide-react";
 import { GithubIcon } from "./GithubIcon";
 
 export default function Hero() {
   return (
     <section id="hero" className="hero-section" aria-label="Introduction">
       <div className="container hero-container">
-        {/* Top Editorial Eyebrow & Live Signal */}
-        <div className="hero-eyebrow-row">
-          <div className="hero-status-pill">
-            <span className="status-indicator-dot" aria-hidden="true" />
-            <span className="status-label">{personalData.availability}</span>
-          </div>
-          <span className="hero-location-tag">
-            <MapPin size={13} className="hero-loc-icon" />
-            <span>{personalData.location}</span>
-          </span>
-        </div>
-
         {/* Hero Asymmetric Editorial Layout */}
         <div className="hero-editorial-grid">
           {/* Main Typography Column */}
