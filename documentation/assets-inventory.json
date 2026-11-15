@@ -1,63 +1,40 @@
 {
   "assets": [
     {
-      "fileName": "photo.jpg",
+      "name": "photo.jpg",
       "path": "assets/photo.jpg",
       "sizeBytes": 109930,
-      "mimeType": "image/jpeg",
-      "description": "Original genuine portrait photograph of Rajeev Yadav",
-      "status": "Preserved - Critical Asset for Hero, About, and Navigation branding",
-      "destinationPaths": [
-        "backup/assets/photo.jpg",
-        "frontend/public/assets/photo.jpg",
-        "frontend/src/assets/photo.jpg"
-      ]
+      "purpose": "Authentic personal portrait of Rajeev Yadav",
+      "status": "active_preserved"
     },
     {
-      "fileName": "resume.pdf",
+      "name": "resume.pdf",
       "path": "assets/resume.pdf",
       "sizeBytes": 157389,
-      "mimeType": "application/pdf",
-      "description": "Official curriculum vitae / resume document of Rajeev Yadav",
-      "status": "Preserved - Critical Document for Download Resume buttons",
-      "destinationPaths": [
-        "backup/assets/resume.pdf",
-        "frontend/public/assets/resume.pdf"
-      ]
+      "purpose": "Official downloadable resume PDF",
+      "status": "active_preserved"
     },
     {
-      "fileName": "solar-system.mp4",
-      "path": "assets/solar-system.mp4",
-      "sizeBytes": 3570542,
-      "mimeType": "video/mp4",
-      "description": "Legacy 3D cosmic planetary background video from old theme",
-      "status": "Archived in backup only - deprecated from active theme per strict design rules against video backgrounds and rainbow effects",
-      "destinationPaths": [
-        "backup/assets/solar-system.mp4"
-      ]
+      "name": "public/assets/photo.jpg",
+      "path": "next-portfolio/public/assets/photo.jpg",
+      "sizeBytes": 109930,
+      "purpose": "Next.js public asset copy for unoptimized Image loading",
+      "status": "active_preserved"
     },
     {
-      "fileName": "bg-720.mp4",
-      "path": "assets/bg-720.mp4",
-      "sizeBytes": 4818740,
-      "mimeType": "video/mp4",
-      "description": "Legacy 720p space background video",
-      "status": "Archived in backup only - deprecated from active theme per strict design guidelines",
-      "destinationPaths": [
-        "backup/assets/bg-720.mp4"
-      ]
-    },
-    {
-      "fileName": "bg-360.mp4",
-      "path": "assets/bg-360.mp4",
-      "sizeBytes": 1067628,
-      "mimeType": "video/mp4",
-      "description": "Legacy 360p space background video",
-      "status": "Archived in backup only - deprecated from active theme per strict design guidelines",
-      "destinationPaths": [
-        "backup/assets/bg-360.mp4"
-      ]
+      "name": "public/assets/resume.pdf",
+      "path": "next-portfolio/public/assets/resume.pdf",
+      "sizeBytes": 157389,
+      "purpose": "Next.js public asset copy for resume download button",
+      "status": "active_preserved"
     }
+  ],
+  "legacy_bundle_artifacts": [
+    "assets/index--E8vE1AF.css",
+    "assets/index-BOWQUS-3.js",
+    "assets/index-CEiCB1Ab.js",
+    "assets/index-D2tJvAmO.js",
+    "assets/index-du6ISVfO.css",
+    "assets/index-DVV77Wio.css"
   ]
 }
-

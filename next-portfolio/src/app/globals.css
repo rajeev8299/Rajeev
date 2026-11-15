@@ -1,194 +1,104 @@
 /* ==================================================
-   DESIGN TOKENS & DUAL-THEME ARCHITECTURE
-   PRIMARY BRAND COLOR: #D5D3EE (LAVENDER DESIGN SYSTEM)
+   DESIGN TOKENS & EDITORIAL LIGHT MODE ARCHITECTURE
+   WARM EDITORIAL PALETTE — FULL-WIDTH LAYOUT SYSTEM
    ================================================== */
 
 :root,
 [data-theme="light"] {
   color-scheme: light;
 
-  /* 1. GLOBAL BASELINE & SURFACES (PRIMARY BRAND COLOR: #D5D3EE) */
-  --bg-app: #D5D3EE;
-  --navbar-bg: rgba(213, 211, 238, 0.94);
-  --surface: #E4E2F3;
-  --surface-raised: #F0EFF8;
-  --surface-muted: #C9C6E4;
-  --surface-elevated: #F0EFF8;
-  --surface-alt: #E4E2F3;
+  /* 1. GLOBAL BASELINE & SURFACES */
+  --bg-app: #F2F0EA;
+  --navbar-bg: rgba(242, 240, 234, 0.96);
+  --surface: #FAF9F6;
+  --surface-raised: #FFFFFF;
+  --surface-muted: #EBE8E0;
+  --surface-elevated: #FAF9F6;
+  --surface-alt: #F0EFE9;
 
   /* 2. TEXT PALETTE */
-  --text-primary: #25233D;
-  --text-secondary: #5F5C78;
-  --text-muted: #76728D;
+  --text-primary: #20283A;
+  --text-secondary: #657084;
+  --text-muted: #848E9F;
   --text-inverse: #FFFFFF;
 
   /* 3. ACCENTS */
-  --primary-accent: #6659A8;
-  --primary-accent-hover: #554991;
-  --blue-primary: #6659A8;
-  --blue-hover: #554991;
-  --blue-light: #E4E2F3;
-  --teal-secondary: #5B4F99;
-  --teal-hover: #4B4180;
-  --teal-light: #ECEBF6;
-  --amber-accent: #786BB8;
-  --amber-light: #ECEAF5;
+  --primary-accent: #526A91;
+  --primary-accent-hover: #415575;
+  --blue-primary: #526A91;
+  --blue-hover: #415575;
+  --blue-light: #E8EDF3;
+  --secondary-accent: #789387;
+  --teal-secondary: #789387;
+  --teal-hover: #637C71;
+  --teal-light: #E7ECE7;
+  --warm-accent: #B27D60;
+  --warm-hover: #98654B;
+  --lavender-subtle: #D5D3EE;
+  --amber-accent: #B27D60;
+  --amber-light: #F7EFE9;
 
-  /* 4. SECTION BACKGROUNDS (HARMONIZED LAVENDER PALETTE) */
-  --bg-hero: #D5D3EE;
-  --bg-about: #D5D3EE;
-  --bg-skills: #DEDCEF;
-  --bg-projects: #D9D6EF;
-  --bg-experience: #D0CEE9;
-  --bg-education: #E3E1F2;
-  --bg-achievements: #E6E4F4;
-  --bg-contact: #CECBE8;
-  --bg-footer: #282541;
-
-  /* 5. CARD & INNER SURFACES */
-  --card-hero-profile: #E4E2F3;
-  --card-about-narrative: #E4E2F3;
-  --card-about-pillar: #F0EFF8;
-  --card-skill: #E6E4F4;
-  --card-skill-inner: #F2F1FA;
-  --card-project: #E4E1F4;
-  --card-project-focus: #EDEAF8;
-  --card-experience: #DFDCF0;
-  --card-experience-inner: #ECEAF7;
-  --card-education: #ECEAF7;
-  --card-education-inner: #F4F3FB;
-  --card-achievement: #ECEAF7;
-  --card-achievement-inner: #F4F3FB;
-  --card-contact: #DDD9F0;
-  --card-contact-inner: #E9E6F6;
-  --form-card-bg: #F0EFF8;
-  --preview-card-bg: #F0EFF8;
-  --preview-inner-bg: #E4E2F3;
-
-  /* 6. BORDERS & FOCUS */
-  --border-color: #B8B4D6;
-  --border-card-hero: #B8B4D6;
-  --border-card-about: #B8B4D6;
-  --border-card-skill: #C2BFDD;
-  --border-card-project: #BCB8DA;
-  --border-card-experience: #B4B0D4;
-  --border-card-education: #C6C3E2;
-  --border-card-achievement: #C8C5E4;
-  --border-card-contact: #B2AED2;
-  --focus-ring: #8278C1;
-
-  /* 7. FOOTER */
-  --footer-background: #282541;
-  --footer-border: #3A365B;
-  --footer-text: #F2F0FF;
-
-  /* 8. SHADOWS */
-  --shadow-xs: 0 1px 2px rgba(37, 35, 61, 0.05);
-  --shadow-sm: 0 2px 6px rgba(37, 35, 61, 0.07);
-  --shadow-md: 0 6px 18px rgba(37, 35, 61, 0.09);
-  --shadow-lg: 0 12px 28px rgba(37, 35, 61, 0.12);
-
-  /* 9. CONTROLS */
-  --btn-secondary-bg: #E4E2F3;
-  --btn-secondary-hover: #F0EFF8;
-  --btn-outline-hover: rgba(102, 89, 168, 0.12);
-  --pill-bg: #E4E2F3;
-  --quote-bg: rgba(228, 226, 243, 0.7);
-}
-
-[data-theme="dark"] {
-  color-scheme: dark;
-
-  /* 1. GLOBAL BASELINE & SURFACES (DEEP LAVENDER & INDIGO) */
-  --bg-app: #171629;
-  --navbar-bg: rgba(23, 22, 41, 0.94);
-  --surface: #211F39;
-  --surface-raised: #292644;
-  --surface-muted: #312E50;
-  --surface-elevated: #292644;
-  --surface-alt: #211F39;
-
-  /* 2. TEXT PALETTE */
-  --text-primary: #F2F0FF;
-  --text-secondary: #C1BEDA;
-  --text-muted: #A29DBF;
-  --text-inverse: #171629;
-
-  /* 3. ACCENTS */
-  --primary-accent: #BDB5F0;
-  --primary-accent-hover: #D0C9FA;
-  --blue-primary: #BDB5F0;
-  --blue-hover: #D0C9FA;
-  --blue-light: #292644;
-  --teal-secondary: #B4ABE8;
-  --teal-hover: #CAC3F2;
-  --teal-light: #26233E;
-  --amber-accent: #C7BFF5;
-  --amber-light: #292644;
-
-  /* 4. SECTION BACKGROUNDS (COORDINATED DARK LAVENDER & INDIGO) */
-  --bg-hero: #171629;
-  --bg-about: #211F39;
-  --bg-skills: #23223D;
-  --bg-projects: #2A2540;
-  --bg-experience: #252238;
-  --bg-education: #23213B;
-  --bg-achievements: #28243E;
-  --bg-contact: #2C2744;
-  --bg-footer: #11101F;
+  /* 4. SECTION BACKGROUNDS (100% FULL-WIDTH VIEWPORT COVERAGE) */
+  --bg-hero: #F2F0EA;
+  --bg-about: #E8EDF3;
+  --bg-skills: #E7ECE7;
+  --bg-experience: #EEEAF2;
+  --bg-education: #F0E8DE;
+  --bg-projects: #E8EAF1;
+  --bg-achievements: #ECE8DE;
+  --bg-contact: #E5ECE8;
+  --bg-footer: #20283A;
 
   /* 5. CARD & INNER SURFACES */
-  --card-hero-profile: #211F39;
-  --card-about-narrative: #292644;
-  --card-about-pillar: #211F39;
-  --card-skill: #292744;
-  --card-skill-inner: #1F1D36;
-  --card-project: #302A48;
-  --card-project-focus: #373152;
-  --card-experience: #2C2742;
-  --card-experience-inner: #211C34;
-  --card-education: #2A2744;
-  --card-education-inner: #1E1B33;
-  --card-achievement: #2E2A46;
-  --card-achievement-inner: #221E36;
-  --card-contact: #332D4E;
-  --card-contact-inner: #25203A;
-  --form-card-bg: #292644;
-  --preview-card-bg: #292644;
-  --preview-inner-bg: #211F39;
+  --card-hero-profile: #FAF9F6;
+  --card-about-narrative: #FAF9F6;
+  --card-about-pillar: #FFFFFF;
+  --card-skill: #FAF9F6;
+  --card-skill-inner: #FFFFFF;
+  --card-project: #FAF9F6;
+  --card-project-focus: #FFFFFF;
+  --card-experience: #FAF9F6;
+  --card-experience-inner: #FFFFFF;
+  --card-education: #FAF9F6;
+  --card-education-inner: #FFFFFF;
+  --card-achievement: #FAF9F6;
+  --card-achievement-inner: #FFFFFF;
+  --card-contact: #FAF9F6;
+  --card-contact-inner: #FFFFFF;
+  --form-card-bg: #FAF9F6;
+  --preview-card-bg: #FAF9F6;
+  --preview-inner-bg: #F4F3ED;
 
   /* 6. BORDERS & FOCUS */
-  --border-color: #464263;
-  --border-card-hero: #464263;
-  --border-card-about: #494568;
-  --border-card-skill: #4A466A;
-  --border-card-project: #524B70;
-  --border-card-experience: #4B456C;
-  --border-card-education: #494468;
-  --border-card-achievement: #4E476E;
-  --border-card-contact: #544A74;
-  --focus-ring: #BDB5F0;
+  --border-color: #DAD8D0;
+  --border-card-hero: #DAD8D0;
+  --border-card-about: #CFD7E3;
+  --border-card-skill: #CED8CE;
+  --border-card-project: #CFD4E2;
+  --border-card-experience: #D7D0E0;
+  --border-card-education: #DCD2C5;
+  --border-card-achievement: #D6D0C2;
+  --border-card-contact: #CDD8D2;
+  --focus-ring: #526A91;
 
   /* 7. FOOTER */
-  --footer-background: #11101F;
-  --footer-border: #28243E;
-  --footer-text: #F2F0FF;
+  --footer-background: #20283A;
+  --footer-border: #323E57;
+  --footer-text: #F2F0EA;
 
   /* 8. SHADOWS */
-  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
-  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.5);
-  --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.6);
-  --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.7);
+  --shadow-xs: 0 1px 2px rgba(32, 40, 58, 0.04);
+  --shadow-sm: 0 2px 6px rgba(32, 40, 58, 0.06);
+  --shadow-md: 0 6px 18px rgba(32, 40, 58, 0.07);
+  --shadow-lg: 0 14px 32px rgba(32, 40, 58, 0.09);
 
   /* 9. CONTROLS */
-  --btn-secondary-bg: #211F39;
-  --btn-secondary-hover: #292644;
-  --btn-outline-hover: rgba(189, 181, 240, 0.1);
-  --pill-bg: rgba(41, 38, 68, 0.7);
-  --quote-bg: rgba(41, 38, 68, 0.6);
-}
+  --btn-secondary-bg: #FAF9F6;
+  --btn-secondary-hover: #EBE8E0;
+  --btn-outline-hover: rgba(82, 106, 145, 0.08);
+  --pill-bg: #FAF9F6;
+  --quote-bg: rgba(250, 249, 246, 0.85);
 
-:root {
   /* SHARED TYPOGRAPHY & MEASUREMENTS */
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -273,15 +183,22 @@ button {
   background: none;
 }
 
-/* CONTAINER */
+/* CONTAINER (BALANCED FULL-WIDTH EDITORIAL VIEWPORT SYSTEM) */
 .container {
   width: 100%;
-  max-width: 1240px;
+  max-width: 1360px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 2rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .container {
+    max-width: 100%;
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
   .container {
     padding: 0 1.25rem;
   }
@@ -307,13 +224,7 @@ button {
   background-color: var(--blue-primary);
   color: #FFFFFF;
   border: 1px solid var(--blue-primary);
-  box-shadow: 0 2px 6px rgba(102, 89, 168, 0.28);
-}
-
-[data-theme="dark"] .btn-primary {
-  color: #171629;
-  font-weight: 700;
-  box-shadow: 0 2px 8px rgba(189, 181, 240, 0.35);
+  box-shadow: 0 2px 6px rgba(82, 106, 145, 0.25);
 }
 
 .btn-primary:hover {
@@ -499,10 +410,6 @@ button {
   font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.05em;
-}
-
-[data-theme="dark"] .brand-badge {
-  color: #171629;
 }
 
 .desktop-nav .nav-list {
@@ -799,10 +706,6 @@ button {
   background: linear-gradient(to top, rgba(37, 35, 61, 0.9) 0%, rgba(37, 35, 61, 0) 100%);
   display: flex;
   justify-content: center;
-}
-
-[data-theme="dark"] .portrait-inner-overlay {
-  background: linear-gradient(to top, rgba(23, 22, 41, 0.92) 0%, rgba(23, 22, 41, 0) 100%);
 }
 
 .portrait-badge-tag {
@@ -1209,11 +1112,6 @@ button {
   border-color: var(--blue-primary);
 }
 
-[data-theme="dark"] .filter-pill-btn.active {
-  color: #171629;
-  font-weight: 700;
-}
-
 /* FEATURED PROJECT SHOWCASE CARD */
 .featured-project-card {
   background-color: var(--card-project);
@@ -1239,10 +1137,6 @@ button {
   letter-spacing: 0.08em;
   padding: 0.375rem 1rem;
   border-radius: 0 0 var(--radius-sm) 0;
-}
-
-[data-theme="dark"] .featured-card-editorial-badge {
-  color: #171629;
 }
 
 .featured-project-grid {
@@ -1444,11 +1338,6 @@ button {
   color: #FFFFFF;
   padding: 0.25rem 0.625rem;
   border-radius: var(--radius-xs);
-}
-
-[data-theme="dark"] .mock-checkout-btn {
-  color: #171629;
-  font-weight: 700;
 }
 
 /* 2. STANDARD DIVERSE PROJECTS GRID */
@@ -1725,10 +1614,6 @@ button {
   padding: 0.25rem 0.625rem;
   border-radius: var(--radius-xs);
   margin-bottom: 0.5rem;
-}
-
-[data-theme="dark"] .timeline-type-pill {
-  color: #171629;
 }
 
 .timeline-role-title {
