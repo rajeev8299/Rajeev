@@ -116,7 +116,9 @@
 }
 
 /* RESET & BASE */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -132,7 +134,10 @@ html {
   html {
     scroll-behavior: auto;
   }
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -151,7 +156,12 @@ body {
 }
 
 /* TYPOGRAPHY SCALE */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   color: var(--text-primary);
   font-weight: 700;
@@ -517,6 +527,7 @@ button {
   .desktop-nav {
     display: none;
   }
+
   .hamburger-btn {
     display: flex;
   }
@@ -668,6 +679,7 @@ button {
   .about-compact-card {
     padding: 1.75rem;
   }
+
   .about-quick-facts {
     grid-template-columns: 1fr;
     gap: 1rem;
@@ -2104,6 +2116,7 @@ button {
 }
 
 @media (max-width: 640px) {
+
   .contact-channels-panel,
   .contact-form-panel {
     padding: 1.5rem;
@@ -2237,6 +2250,7 @@ button {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
+
   .contact-field.full-width {
     grid-column: auto;
   }
@@ -2361,6 +2375,7 @@ button {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
   }
+
   .footer-brand-column {
     grid-column: 1 / -1;
   }
@@ -2371,6 +2386,7 @@ button {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
+
   .footer-brand-column {
     grid-column: auto;
   }

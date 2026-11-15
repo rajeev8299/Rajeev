@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { personalData } from "@/data/portfolio";
 import { ArrowUp, Mail, FileText, MapPin } from "lucide-react";
 import { GithubIcon } from "./GithubIcon";
@@ -15,34 +16,45 @@ export default function Footer() {
     { href: "#hero", label: "Home" },
     { href: "#about", label: "About" },
     { href: "#skills", label: "Skills" },
+    { href: "#experience", label: "Experience" },
     { href: "#projects", label: "Projects" },
+    { href: "#education", label: "Education" },
     { href: "#contact", label: "Contact" },
   ];
 
   return (
     <footer className="footer-site" role="contentinfo">
-      <div className="container footer-container">
+      <div className="footer-inner">
         {/* Top 3-Column Section */}
-        <div className="footer-main-grid">
+        <div className="footer-main">
           {/* Column 1: Personal Brand */}
           <div className="footer-brand-column">
-            <div className="footer-brand-header">
-              <span className="brand-badge">{personalData.initials}</span>
-              <div>
+            <div className="footer-brand-identity">
+              <div className="footer-avatar-wrapper">
+                <Image
+                  src={personalData.photoPath}
+                  alt={personalData.name}
+                  width={50}
+                  height={50}
+                  className="footer-avatar-img"
+                  unoptimized
+                />
+              </div>
+              <div className="footer-brand-meta">
                 <h3 className="footer-brand-name">{personalData.name}</h3>
                 <p className="footer-brand-role">{personalData.role}</p>
               </div>
             </div>
             <p className="footer-location-tag">
-              <MapPin size={13} aria-hidden="true" />
+              <MapPin size={14} aria-hidden="true" className="footer-location-icon" />
               <span>{personalData.location}</span>
             </p>
           </div>
 
-          {/* Column 2: Quick Navigation */}
+          {/* Column 2: Navigation (Neat 2-Column Grid) */}
           <div className="footer-nav-column">
             <h4 className="footer-column-heading">Navigation</h4>
-            <ul className="footer-nav-list">
+            <ul className="footer-nav-grid">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <a href={link.href} className="footer-nav-link">
@@ -53,7 +65,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Connect & Actions */}
+          {/* Column 3: Connect */}
           <div className="footer-connect-column">
             <h4 className="footer-column-heading">Connect</h4>
             <ul className="footer-connect-list">
@@ -88,7 +100,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Section with Divider */}
+        {/* Bottom Bar with Subtle Divider */}
         <div className="footer-bottom-row">
           <p className="footer-copyright">
             &copy; {currentYear} {personalData.name}. All rights reserved.
