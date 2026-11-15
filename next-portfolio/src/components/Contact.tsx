@@ -164,13 +164,14 @@ export default function Contact() {
           <div className="contact-form-panel">
             <h3 className="form-panel-title">Send a Message</h3>
             <p className="form-panel-desc">
-              Have an opening or project inquiry? Fill out the details below to initiate direct email contact.
+              Have a project or opportunity? Send me a message.
             </p>
 
-            <form onSubmit={handleSubmit} className="contact-editorial-form" noValidate>
-              <div className="form-field-group">
-                <label htmlFor="contact-name" className="field-label">
-                  Your Full Name <span className="required-star">*</span>
+            {/* Direct Inquiry Form with Professional 2-Column Responsive Grid */}
+            <form onSubmit={handleSubmit} className="contact-form-grid" noValidate>
+              <div className="contact-field">
+                <label htmlFor="contact-name" className="contact-field-label">
+                  Full Name <span className="required-star">*</span>
                 </label>
                 <input
                   id="contact-name"
@@ -179,14 +180,14 @@ export default function Contact() {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="e.g. Priyanshu Sharma"
-                  className="field-input"
+                  placeholder="Your name"
+                  className="contact-field-input"
                 />
               </div>
 
-              <div className="form-field-group">
-                <label htmlFor="contact-email" className="field-label">
-                  Your Email Address <span className="required-star">*</span>
+              <div className="contact-field">
+                <label htmlFor="contact-email" className="contact-field-label">
+                  Email Address <span className="required-star">*</span>
                 </label>
                 <input
                   id="contact-email"
@@ -195,14 +196,14 @@ export default function Contact() {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="e.g. priyanshu@company.com"
-                  className="field-input"
+                  placeholder="you@example.com"
+                  className="contact-field-input"
                 />
               </div>
 
-              <div className="form-field-group">
-                <label htmlFor="contact-subject" className="field-label">
-                  Subject / Topic
+              <div className="contact-field full-width">
+                <label htmlFor="contact-subject" className="contact-field-label">
+                  Subject <span className="optional-tag">(Optional)</span>
                 </label>
                 <input
                   id="contact-subject"
@@ -210,44 +211,46 @@ export default function Contact() {
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  placeholder="e.g. Frontend Developer Role / Project Proposal"
-                  className="field-input"
+                  placeholder="Project inquiry / Job opportunity"
+                  className="contact-field-input"
                 />
               </div>
 
-              <div className="form-field-group">
-                <label htmlFor="contact-message" className="field-label">
-                  Your Message <span className="required-star">*</span>
+              <div className="contact-field full-width">
+                <label htmlFor="contact-message" className="contact-field-label">
+                  Message <span className="required-star">*</span>
                 </label>
                 <textarea
                   id="contact-message"
                   name="message"
                   required
-                  rows={4}
+                  rows={5}
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Tell me about your team, role, or project..."
-                  className="field-textarea"
+                  placeholder="Tell me briefly about your project or opportunity..."
+                  className="contact-field-textarea"
                 />
               </div>
 
               {status.message && (
-                <div className={`form-status-banner ${status.state}`}>{status.message}</div>
+                <div className={`contact-status-banner full-width ${status.state}`}>
+                  {status.message}
+                </div>
               )}
 
-              <div className="form-submit-row">
-                <button type="submit" className="btn btn-primary">
+              <div className="contact-actions-row full-width">
+                <button type="submit" className="btn btn-primary btn-submit">
                   <Send size={16} />
-                  <span>Send Message Directly</span>
+                  <span>Send Message</span>
                 </button>
                 <a
                   href={`mailto:${personalData.email}?subject=${encodeURIComponent(
-                    formData.subject || "Portfolio Inquiry"
+                    formData.subject || "Project Inquiry"
                   )}&body=${encodeURIComponent(formData.message || "")}`}
-                  className="btn btn-secondary btn-sm"
+                  className="btn btn-outline"
                 >
-                  <span>Open In Mail App</span>
-                  <ArrowUpRight size={14} />
+                  <Mail size={16} />
+                  <span>Email Me Directly</span>
                 </a>
               </div>
             </form>
